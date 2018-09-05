@@ -21,6 +21,19 @@ angular.module('myApp', [
       templateUrl: './views/home.html'
     })
     .otherwise({redirectTo:'/'})
+}]).run(['$rootScope', '$location', '$cookies', '$http', function($rootScope, $location, $cookies, $http){
+  $rootScope.globals = $cookies.getObject('globals') || {};
+  if ($rootScope.globals.currentUser) {
+            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+        }
+  $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in and trying to access a restricted page
+            var restrictedPage = $.inArray($location.path(), ['/login') === -1;
+            var loggedIn = $rootScope.globals.currentUser;
+            if (restrictedPage && !loggedIn) {
+                $location.path('/login');
+            }
+        });
 }])
 
 var app = angular.module("myApp");
