@@ -1,48 +1,44 @@
-'use strict'
+(function () {
+    'use strict';
 
-// Declare modules
-angular.module('Authentication', []);
-angular.module('Home', []);
+    angular
+        .module('app', ['ui.router', 'ngMessages', 'ngStorage'])
+        .config(config)
+        .run(run);
 
-angular.module('myApp', [
-  'ngRoute',
-  'Authentication',
-  'Home',
-  'routeStyles'
-]).config(['$locationProvider','$routeProvider',function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-  $routeProvider
-    .when('/login', {
-      controller: 'LoginController',
-      templateUrl: './views/login.html',
-    })
-    .when('/home', {
-      controller: 'HomeController',
-      templateUrl: './views/home.html'
-    })
-    .otherwise({redirectTo:'/'})
-}]).run(['$rootScope', '$location', '$cookies', '$http', function($rootScope, $location, $cookies, $http){
-  $rootScope.globals = $cookies.getObject('globals') || {};
-  if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+    function config($stateProvider, $urlRouterProvider) {
+        // default route
+        $urlRouterProvider.otherwise("/");
+
+        // app routes
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: 'views/home/home.html',
+                controller: 'controllers/home.controller.js',
+                controllerAs: 'vm'
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'views/login/login.html',
+                controller: 'controllers/login.controller.js',
+                controllerAs: 'vm'
+            });
+    }
+
+    function run($rootScope, $http, $location, $localStorage) {
+        // keep user logged in after page refresh
+        if ($localStorage.currentUser) {
+            $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
         }
-  $rootScope.$on('$locationChangeStart', function (event, next, current) {
-            // redirect to login page if not logged in and trying to access a restricted page
-            var restrictedPage = $.inArray($location.path(), ['/login') === -1;
-            var loggedIn = $rootScope.globals.currentUser;
-            if (restrictedPage && !loggedIn) {
+
+        // redirect to login page if not logged in and trying to access a restricted page
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            var publicPages = ['/login'];
+            var restrictedPage = publicPages.indexOf($location.path()) === -1;
+            if (restrictedPage && !$localStorage.currentUser) {
                 $location.path('/login');
             }
         });
-}])
-
-var app = angular.module("myApp");
-app.controller('navController', ['$scope', '$location', function ($scope, $location) {
-    $scope.items = [
-        {path: '/home', title: 'home'},
-        {path: '/login', title: 'login'}
-    ];
-    $scope.isActive = function (item) {
-        return item.path === $location.path();
-    };
-}]);
+    }
+})();
