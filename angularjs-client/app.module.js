@@ -15,13 +15,13 @@
             .state('home', {
                 url: '/',
                 templateUrl: 'views/home/home.html',
-                controller: 'controllers/home.controller.js',
+                controller: 'home.controller',
                 controllerAs: 'vm'
             })
             .state('login', {
                 url: '/login',
                 templateUrl: 'views/login/login.html',
-                controller: 'controllers/login.controller.js',
+                controller: 'login.controller',
                 controllerAs: 'vm'
             });
     }

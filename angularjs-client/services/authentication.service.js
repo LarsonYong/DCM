@@ -14,11 +14,11 @@
         return service;
 
         function Login(username, password, callback) {
-          console.log("1111111")
+
             $http.post('http://0.0.0.0:4001/api/login', { "username": username, "password": password },)
                 .success(function (response) {
                     // login successful if there's a token in the response
-                    if (response.token) {
+                    if (response.auth) {
                         // store username and token in local storage to keep user logged in between page refreshes
                         $localStorage.currentUser = { username: username, token: response.token };
 
@@ -27,10 +27,10 @@
 
                         // execute callback with true to indicate successful login
                         callback(true);
-                    } else {
-                        // execute callback with false to indicate failed login
-                        callback(false);
                     }
+                })
+                .error(function(response) {
+                  callback(response)
                 });
         }
 
@@ -39,5 +39,7 @@
             delete $localStorage.currentUser;
             $http.defaults.headers.common.Authorization = '';
         }
+
+
     }
 })();

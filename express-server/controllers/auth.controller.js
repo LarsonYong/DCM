@@ -21,7 +21,7 @@ export const login = (req,res) => {
         });
 
         var userDetail = {'username':user.username,}
-        return res.status(202).send({'auth': true, 'message':'Success login','user':user,'token':token})
+        return res.status(202).send({'auth': true, 'message':'Success login','user':user.username,'token':token})
       }
       else {
         res.status(401).send({'auth':false, 'message':'Wrong password'})
