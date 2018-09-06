@@ -22,14 +22,14 @@
             console.log('11112321312312')
             vm.loading = true;
             console.log(vm.username)
-            AuthenticationService.Login(vm.username, vm.password, function (result) {
-                if (result === true) {
-                    $location.path('/');
-                } else {
-                    vm.error = 'Username or password is incorrect';
-                    vm.loading = false;
-                }
-            });
+            // AuthenticationService.Login(vm.username, vm.password, function (result) {
+            //     if (result === true) {
+            //         $location.path('/');
+            //     } else {
+            //         vm.error = 'Username or password is incorrect';
+            //         vm.loading = false;
+            //     }
+            // });
         };
     }
 
