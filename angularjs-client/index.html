@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-    <title>AngularJS JWT Authentication Example & Tutorial</title>
+    <title>Devtest Centrol Managment</title>
 
     <!-- bootstrap css -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link href="assets/App.css" rel="stylesheet" />
     <!-- application css -->
     <!-- <link href="app-content/app.css" rel="stylesheet" /> -->
 </head>
 <body>
     <!-- main app container -->
-    <div class="jumbotron">
-        <div class="container">
-            <div class="col-sm-8 col-sm-offset-2">
+
                 <ui-view></ui-view>
-            </div>
-        </div>
-    </div>
+
 
     <!-- credits -->
 
@@ -27,7 +24,6 @@
     <script src="js/angular-messages.min.js"></script>
     <script src="js/angular-ui-router.min.js"></script>
     <script src="js/ngStorage.min.js"></script>
-
 
     <!-- application scripts -->
     <script src="app.module.js"></script>

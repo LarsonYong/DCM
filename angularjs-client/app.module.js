@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'ngMessages', 'ngStorage'])
+        .module('app', ['ui.router', 'ngMessages', 'ngStorage' ])
         .config(config)
         .run(run);
 
@@ -16,7 +16,10 @@
                 url: '/',
                 templateUrl: 'views/home/home.html',
                 controller: 'home.controller',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                data: {
+                  css: 'views/home/home.css'
+                }
             })
             .state('login', {
                 url: '/login',

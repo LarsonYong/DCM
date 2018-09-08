@@ -1,0 +1,91 @@
+.Header {
+  height: 100px;
+  width: 100%;
+  margin-top: 50px;
+  /* margin-left: 20px; */
+  /* border-bottom: 2px solid black; */
+
+}
+.fix {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.col-fix {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.badge {
+  margin-left: 10px;
+}
+.logo {
+  height: 100px;
+  width: 288px;
+  padding-top: 20px;
+  float: left;
+  padding-left: 50px;
+}
+.logout {
+  height: 100px;
+  width: 288px;
+  float: right;
+  text-align: right;
+  padding-top: 70px;
+  padding-right: 40px
+}
+.analyze-fix {
+  margin-top: -10px;
+}
+.bold {
+  font-weight: bold;
+  /* font-size: 20px; */
+}
+
+.TK1 {
+  /* background-color: #fa8231; */
+  background-color: #d4f7e8;
+}
+.XU4 {
+  /* background-color: #20bf6b; */
+    background-color: #eaecd3;
+}
+.RPI {
+  /* background-color: #fc5c65; */
+    background-color: #ecbfbf;
+}
+.DELL {
+  /* background-color: #45aaf2; */
+    background-color: #d3edf9;
+}
+.nodes-title {
+  text-align: left;
+  padding-left: 100px;
+  height:10px
+  /* padding-left: 45%; */
+}
+.node {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  height: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.node-detail {
+  /* height: 130px; */
+
+  /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
+
+}
+.nodes-area:hover {
+    /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
+}
+.node-title {
+  padding-left: 120px;
+  width: 200px;
+  float: left;
+  /* height: 100px; */
+
+}
+.node-title h2 {
+  font-size: 35px;
+  margin-top: 40px;
+}
