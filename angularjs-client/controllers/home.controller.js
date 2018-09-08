@@ -51,6 +51,39 @@
           }
 
         }
+
+        $scope.selectNode=function($event){
+          var targetCard= $event.target.closest('div').parentNode.parentNode;
+          console.log(targetCard.classList[0])
+          console.log(targetCard.classList[-1])
+          if (targetCard.classList[1] == 'col-sm-4' || targetCard.classList[0] == 'col-sm-4'){
+            setTimeout(function () {
+              targetCard.classList.remove('col-sm-4');
+
+            },25)
+            setTimeout(function () {
+              targetCard.classList.add('col-sm-12');
+
+            },10)
+
+
+          }
+          if (targetCard.classList[1] == 'col-sm-12' || targetCard.classList[0] == 'col-sm-12') {
+            setTimeout(function() {
+              targetCard.classList.remove('col-sm-12');
+            },10)
+
+            setTimeout(function () {
+
+              targetCard.classList.add('col-sm-4');
+            },10)
+
+          }
+          // $event.target.closest('div').parentNode.parentElement.classList.add('row').remove('card-colums')
+        }
+        function selectNode($event){
+          console.log($event.target)
+        }
     }
 
 })();

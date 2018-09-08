@@ -13,49 +13,33 @@
     <div class="nodes-title">
 
     </div>
-    <div class="card-columns ">
-      <!-- <div class="card">
-        <div class="node-detail clearfix">
-          <div class="node-title">
-            <h2> 12334</h2>
+    <div class="row ">
+      <div class="col-sm-4" ng-repeat="node in nodes">
+        <div class="card">
+          <div class="card-header bold " style="font-size: 20px;">{{node.UnitID}}<span class="badge badge-dark"  style="font-weight:400;">{{node.Hardware.Platform}}</span></div>
+          <div class="card-body no-padding-bottom">
+            <p class="card-text no-margin-bottom">IP address: {{node.Software.IP_address}}</p>
+            <p class="card-text lg-margin-bottom"><small class="text-muted">Last online 3 mins ago</small></p>
+            <p>
+              <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" ng-click="selectNode($event)" data-target="#collapse{{node.UnitID}}" aria-expanded="false" aria-controls="collapseExample">
+                View last status
+              </button>
+              <button class="btn  btn-light float-right" style="margin-top: -7px;" >Analyze</button>
+
+            </p>
+            <div class="collapse" id="collapse{{node.UnitID}}">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
           </div>
         </div>
-        <div class="node-action"></div>
-      </div> -->
-      <div class="card">
-        <div class="card-header bold RPI">12334<span class="badge badge-secondary">RPI</span></div>
-        <div class="card-body">
-          <!-- <p class="card-text">Platfrom: RPI  </p> -->
-          <p class="card-text">IP address: 10.70.35.35</p>
+        </div>
+      </div>
 
-          <p class="card-text"><small class="text-muted">Last online 3 mins ago</small></p>
-          <!-- <a href="#" class="btn btn-light analyze-fix float-right">Analyze</a>
-          <a href="#" class="card-link">Result</a> -->
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
-  </button>
-<div class="collapse.show" id="collapseExample">
-  <div class="card card-body">
-    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-  </div>
+
 </div>
-      </div>
-    </div>
-      <div class="card">
-        <div class="card-header bold TK1">12334</div>
-        <div class="card-body">
-          <!-- <p class="card-text">Platfrom: RPI  </p> -->
-          <p class="card-text">IP address: 10.70.35.35</p>
-          <p class="card-text"><small class="text-muted">Last online 3 mins ago</small></p>
-      </div>
-    </div>
-      <div class="card">
-        <div class="card-header bold XU4">12334</div>
-        <div class="card-body">
-          <!-- <p class="card-text">Platfrom: RPI  </p> -->
-          <p class="card-text">IP address: 10.70.35.35</p>
-          <p class="card-text"><small class="text-muted">Last online 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
+
+</div>
+
+
 </div>

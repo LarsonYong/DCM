@@ -24,6 +24,28 @@
   float: left;
   padding-left: 50px;
 }
+.full-card {
+  width: 50rem !important;
+  display: grid;
+}
+.card {
+  margin-bottom: 10px;
+}
+.card-header {
+  /* background-color: #c6efd0; */
+}
+.no-margin-bottom {
+  margin-bottom: 0px;
+}
+.lg-margin-bottom {
+  margin-bottom: 40px;
+}
+.no-padding-bottom {
+  padding-bottom: 5px;
+}
+.btn-link {
+  margin-left: -10px
+}
 .logout {
   height: 100px;
   width: 288px;
@@ -41,20 +63,40 @@
 }
 
 .TK1 {
-  /* background-color: #fa8231; */
-  background-color: #d4f7e8;
+  background-color: #56d49e;
+  /* opacity:1.3; */
 }
 .XU4 {
-  /* background-color: #20bf6b; */
-    background-color: #eaecd3;
+    background-color: #cedc2a;
+    /* opacity:1.3; */
 }
 .RPI {
-  /* background-color: #fc5c65; */
     background-color: #ecbfbf;
+    /* opacity:1.3; */
 }
 .DELL {
-  /* background-color: #45aaf2; */
-    background-color: #d3edf9;
+    background-color: #99d8f5;
+    /* opacity:1.3; */
+}
+.TK1Light {
+  background-color: #d4f7e8;
+  opacity:1.0;
+  font-weight: 550;
+}
+.XU4Light {
+  background-color: #eaecd3;
+  opacity:1.0;
+  font-weight: 550;
+}
+.RPILight {
+  background-color: #ecbfbf;
+  opacity:1.0;
+  font-weight: 550;
+}
+.DELLLight {
+  background-color: #d3edf9;
+  opacity:1.0;
+  font-weight: 550;
 }
 .nodes-title {
   text-align: left;
