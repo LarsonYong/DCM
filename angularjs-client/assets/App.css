@@ -34,11 +34,61 @@
 .card-header {
   /* background-color: #c6efd0; */
 }
-.no-margin-bottom {
+.card-img-top {
+  /* box-shadow:  0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15); */
+}
+.card-title {
   margin-bottom: 0px;
 }
+.c50px {
+  height: 0px;
+}
+.sm-margin-top {
+  margin-top: 20px;
+}
+.dot {
+  height: 5px;
+  width: 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+.border-info: {
+  border: 1px solid #2dcee3 !important;
+}
+
+.badge {
+  font-size: 10px;
+  vertical-align: top;
+  top: 5px;
+  position: relative;
+}
+.clip {
+  height: 261px;
+  object-fit: cover;
+  object-position:0px -560px;
+  animation: ltr 8s alternate;
+}
+@keyframes ltr {
+  0% {
+    object-position: 0% 0%;
+  }
+  25% {
+    object-position: 20% 0%;
+  }
+  100% {
+    object-position: 100% 100%;
+  }
+}
+.no-margin-bottom {
+  margin-bottom: 0px;
+  margin-top: 30px;
+}
 .lg-margin-bottom {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+.xx {
+  margin-top: 18px;
 }
 .no-padding-bottom {
   padding-bottom: 5px;

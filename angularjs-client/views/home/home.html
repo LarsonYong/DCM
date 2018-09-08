@@ -14,22 +14,66 @@
 
     </div>
     <div class="row ">
-      <div class="col-sm-4" ng-repeat="node in nodes">
+      <div class="col-sm-4" ng-repeat="node in nodes" ng-value="{{$index}}">
         <div class="card">
-          <div class="card-header bold " style="font-size: 20px;">{{node.UnitID}}<span class="badge badge-dark"  style="font-weight:400;">{{node.Hardware.Platform}}</span></div>
+          <!-- <div class="card-img-top ">
+            <img class="fixheight sor" src="assets/{{'0' + ($index + 1) +'.jpg'}}" alt="Card image cap">
+          </div> -->
+          <img class="card-img-top" src="assets/{{'0' + ($index + 1) +'.jpg'}}" alt="Card image cap">
+          <!-- <div class="card-header bold " style="font-size: 20px;">{{node.UnitID}}<span class="badge badge-dark"  style="font-weight:400;">{{node.Hardware.Platform}}</span></div> -->
           <div class="card-body no-padding-bottom">
-            <p class="card-text no-margin-bottom">IP address: {{node.Software.IP_address}}</p>
+            <h3 class="card-title">{{node.UnitID}}<span class="badge badge-dark">{{node.Hardware.Platform}}</span></h3>
+            <!-- <p class="card-text no-margin-bottom">IP address: {{node.Software.IP_address}}</p> -->
             <p class="card-text lg-margin-bottom"><small class="text-muted">Last online 3 mins ago</small></p>
-            <p>
-              <button class="btn btn-link btn-sm" type="button" data-toggle="collapse" ng-click="selectNode($event)" data-target="#collapse{{node.UnitID}}" aria-expanded="false" aria-controls="collapseExample">
-                View last status
+            <div class="c50px"></div>
+          </div>
+          <div class="card-body text-muted">
+              <button class="btn btn-link btn-sm ele" type="button" data-toggle="collapse" ng-click="selectNode($event)" data-target="#collapse{{node.UnitID}}" aria-expanded="false" aria-controls="collapseExample">
+                More details >>
               </button>
-              <button class="btn  btn-light float-right" style="margin-top: -7px;" >Analyze</button>
-
-            </p>
-            <div class="collapse" id="collapse{{node.UnitID}}">
+              <button class="btn btn-sm btn-outline-info border-info float-right" style="margin-top: 0px; margin-left: 5px;" >Result</button>
+              <button class="btn btn-sm btn-outline-success float-right" style="margin-top: -0px;" >Analyze</button>
+            <div class="collapse xx" id="collapse{{node.UnitID}}">
             <div class="card card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-{{node.UnitID}}home-tab" data-toggle="tab" href="#nav-{{node.UnitID}}home" role="tab" aria-controls="nav-{{node.UnitID}}home" aria-selected="true">Software</a>
+                  <a class="nav-item nav-link" id="nav-{{node.UnitID}}profile-tab" data-toggle="tab" href="#nav-{{node.UnitID}}profile" role="tab" aria-controls="nav-{{node.UnitID}}profile" aria-selected="false">Hardware</a>
+                  <a class="nav-item nav-link" id="nav-{{node.UnitID}}contact-tab" data-toggle="tab" href="#nav-{{node.UnitID}}contact" role="tab" aria-controls="nav-{{node.UnitID}}contact" aria-selected="false">Test</a>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-{{node.UnitID}}home" role="tabpanel" aria-labelledby="nav-{{node.UnitID}}home-tab">
+                  <table class="table table-hover sm-margin-top">
+                    <tbody>
+                      <tr ng-repeat="(key, val) in node.Software">
+                        <th >{{key}}</th>
+                        <td>{{val}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab-pane fade" id="nav-{{node.UnitID}}profile" role="tabpanel" aria-labelledby="nav-{{node.UnitID}}profile-tab">
+                  <table class="table table-hover sm-margin-top">
+                    <tbody>
+                      <tr ng-repeat="(key, val) in node.Hardware">
+                        <th >{{key}}</th>
+                        <td>{{val}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab-pane fade" id="nav-{{node.UnitID}}contact" role="tabpanel" aria-labelledby="nav-{{node.UnitID}}contact-tab">
+                  <table class="table table-hover sm-margin-top">
+                    <tbody>
+                      <tr ng-repeat="(key, val) in node.Test">
+                        <th >{{key}}</th>
+                        <td>{{val}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>

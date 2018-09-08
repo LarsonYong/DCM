@@ -15,9 +15,7 @@
           getUser();
           $http.get('http://0.0.0.0:4001/api/node',{headers:headers})
               .success(function(response) {
-                console.log(response)
                 var nodes = response.nodes
-                console.log(nodes)
                 $scope.nodes = nodes
               })
               .error(function(response){
@@ -54,35 +52,41 @@
 
         $scope.selectNode=function($event){
           var targetCard= $event.target.closest('div').parentNode.parentNode;
-          console.log(targetCard.classList[0])
-          console.log(targetCard.classList[-1])
+          var cardImg = targetCard.children[0].children[0]
           if (targetCard.classList[1] == 'col-sm-4' || targetCard.classList[0] == 'col-sm-4'){
             setTimeout(function () {
               targetCard.classList.remove('col-sm-4');
-
             },25)
             setTimeout(function () {
               targetCard.classList.add('col-sm-12');
-
             },10)
-
-
           }
           if (targetCard.classList[1] == 'col-sm-12' || targetCard.classList[0] == 'col-sm-12') {
             setTimeout(function() {
               targetCard.classList.remove('col-sm-12');
             },10)
-
             setTimeout(function () {
-
               targetCard.classList.add('col-sm-4');
             },10)
-
           }
+          if (cardImg.classList[0] !== 'clip' && cardImg.classList[1] !== 'clip' ) {
+            cardImg.classList.add('clip');
+          }else {
+            cardImg.classList.remove('clip')
+          }
+
+
           // $event.target.closest('div').parentNode.parentElement.classList.add('row').remove('card-colums')
         }
+
         function selectNode($event){
           console.log($event.target)
+        }
+
+        $scope.createImgNum= function (){
+          var num= Math.floor(Math.random()*10) +1;
+          var img= '0' + num +'.jpg'
+          return img
         }
     }
 
