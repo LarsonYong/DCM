@@ -1,3 +1,6 @@
+* {
+  font-family: 'Muli', sans-serif;
+}
 .Header {
   height: 100px;
   width: 100%;
@@ -6,6 +9,13 @@
   /* border-bottom: 2px solid black; */
 
 }
+a {
+  color:#329feb
+}
+a:hover {
+  color:#2781bf;
+}
+
 .fix {
   margin-left: 0px;
   margin-right: 0px;
@@ -56,17 +66,39 @@
 .border-info: {
   border: 1px solid #2dcee3 !important;
 }
-
+.badge-dark {
+  background-color: #515961;
+}
+.sm-padding-bottom {
+  padding-bottom: 12px;
+}
+.btn-color-fix {
+  color:#329feb;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #33b5e5 !important;
+    border-color: #33b5e5;
+}
+.btn-outline-primary, .btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:visited {
+    border-color: #71c2fb;
+}
+.btn-outline-primary {
+  color: #5abbea;
+  border-color: #71cefb;
+}
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:visited {
+  background-color: #71c2fb;
+}
 .badge {
-  font-size: 10px;
+  font-size: 11px;
   vertical-align: top;
-  top: 5px;
+  top: 6px;
   position: relative;
 }
 .clip {
   height: 261px;
   object-fit: cover;
-  object-position:0px -560px;
+  object-position:0px -570px;
   animation: ltr 8s alternate;
 }
 @keyframes ltr {

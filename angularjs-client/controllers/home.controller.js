@@ -55,19 +55,20 @@
           var cardImg = targetCard.children[0].children[0]
           if (targetCard.classList[1] == 'col-sm-4' || targetCard.classList[0] == 'col-sm-4'){
             setTimeout(function () {
-              targetCard.classList.remove('col-sm-4');
-            },25)
-            setTimeout(function () {
-              targetCard.classList.add('col-sm-12');
+              targetCard.classList.remove('col-sm-4');setTimeout(function () {
+                targetCard.classList.add('col-sm-12');
+              },10)
             },10)
+
           }
           if (targetCard.classList[1] == 'col-sm-12' || targetCard.classList[0] == 'col-sm-12') {
             setTimeout(function() {
               targetCard.classList.remove('col-sm-12');
+              setTimeout(function () {
+                targetCard.classList.add('col-sm-4');
+              },10)
             },10)
-            setTimeout(function () {
-              targetCard.classList.add('col-sm-4');
-            },10)
+
           }
           if (cardImg.classList[0] !== 'clip' && cardImg.classList[1] !== 'clip' ) {
             cardImg.classList.add('clip');
