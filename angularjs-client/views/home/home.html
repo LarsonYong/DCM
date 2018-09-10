@@ -14,8 +14,8 @@
 
     </div>
     <div class="row ">
-      <div class="col-sm-4" ng-repeat="node in nodes" ng-value="{{$index}}">
-        <div class="card">
+      <div class="col-sm-4" ng-repeat="node in nodes " ng-value="{{$index}}">
+        <div class="card node-card moveup"  ng-style="{'animation': 'moveUp ' + (($index)*0.07 + 0.5) + 's ease forwards'}" style="transition-delay: {{$index * 500}}ms" >
           <!-- <div class="card-img-top ">
             <img class="fixheight sor" src="assets/{{'0' + ($index + 1) +'.jpg'}}" alt="Card image cap">
           </div> -->
