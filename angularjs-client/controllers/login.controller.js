@@ -21,6 +21,9 @@
             vm.loading = true;
             AuthenticationService.Login(vm.username, vm.password, function (result) {
                 if (result === true) {
+                    var bkg = document.querySelectorAll(".bkg");
+                    bkg[0].classList.add('ease-out')
+                    wait(100)
                     $location.path('/');
                 }
                 if (result !== true){
@@ -29,6 +32,14 @@
                 }
             });
         };
+
+        function wait(ms){
+         var start = new Date().getTime();
+         var end = start;
+         while(end < start + ms) {
+           end = new Date().getTime();
+        }
+      }
     }
 
 })();

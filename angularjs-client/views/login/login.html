@@ -1,5 +1,6 @@
-<div class="col-md-6 col-md-offset-3">
-    <h2>Login</h2>
+<div class="bkg" ng-style="{'background-image':'url(/assets/'+'bkg1.jpg'+')'}">
+<div class="col-3 col-md-offset-3 login " >
+    <h2 style="text-align:center">DCM Login</h2>
     <form name="form" ng-submit="form.$valid && vm.login()" novalidate>
     <!-- <form name="form" novalidate> -->
         <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.username.$invalid }">
@@ -17,23 +18,9 @@
             </div>
         </div>
         <div class="form-group">
-            <button ng-disabled="vm.loading" class="btn btn-primary" >Login</button>
+            <button style='width: 100%; margin-top: 10px;' ng-disabled="vm.loading" class="btn btn-primary" >Login</button>
         </div>
         <div ng-if="vm.error" class="alert alert-danger">{{vm.error}}</div>
     </form>
-    <!-- <form >
-      <div >
-        <label >Username</label>
-        <input name="username" class="form-control" ng-model="vm.username" required/>
-      </div>
-      <div >
-        <label>Password</label>
-        <input name="password" class="form-control" ng-model="vm.password" required/>
-      </div >
-        <button class="btn btn-primary" ng-click="vm.login()" >Login</button>
-      <div>
-      </div>
-       <div ng-if="vm.error" class="alert alert-danger">{{vm.error}}</div>
-    </form> -->
-
+</div>
 </div>
