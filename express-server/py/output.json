@@ -1,0 +1,118 @@
+{
+    "cat /v5/.version": [
+        "tegraK1.armv7l.master.2-3-2.20180911112529.full"
+    ], 
+    "df -h": [
+        "Filesystem      Size  Used Avail Use% Mounted on", 
+        "/dev/mmcblk0p1   14G  9.0G  4.2G  69% /", 
+        "none            4.0K     0  4.0K   0% /sys/fs/cgroup", 
+        "devtmpfs        938M  4.0K  938M   1% /dev", 
+        "none            190M  756K  189M   1% /run", 
+        "none            5.0M     0  5.0M   0% /run/lock", 
+        "none            947M  2.7M  944M   1% /run/shm", 
+        "none            100M     0  100M   0% /run/user", 
+        "/dev/sda1       459G  331G  128G  73% /v5/video"
+    ], 
+    "du -mh --max-depth=2 /v5/video/999.18.0/2018/": [
+        "16G\t/v5/video/999.18.0/2018/09/02", 
+        "16G\t/v5/video/999.18.0/2018/09/03", 
+        "16G\t/v5/video/999.18.0/2018/09/11", 
+        "16G\t/v5/video/999.18.0/2018/09/05", 
+        "16G\t/v5/video/999.18.0/2018/09/09", 
+        "16G\t/v5/video/999.18.0/2018/09/06", 
+        "16G\t/v5/video/999.18.0/2018/09/08", 
+        "16G\t/v5/video/999.18.0/2018/09/04", 
+        "16G\t/v5/video/999.18.0/2018/09/01", 
+        "16G\t/v5/video/999.18.0/2018/09/10", 
+        "2.3G\t/v5/video/999.18.0/2018/09/12", 
+        "16G\t/v5/video/999.18.0/2018/09/07", 
+        "175G\t/v5/video/999.18.0/2018/09", 
+        "16G\t/v5/video/999.18.0/2018/08/27", 
+        "7.6G\t/v5/video/999.18.0/2018/08/28", 
+        "16G\t/v5/video/999.18.0/2018/08/30", 
+        "8.0G\t/v5/video/999.18.0/2018/08/29", 
+        "16G\t/v5/video/999.18.0/2018/08/31", 
+        "63G\t/v5/video/999.18.0/2018/08", 
+        "238G\t/v5/video/999.18.0/2018/"
+    ], 
+    "du -mh --max-depth=2 /v5/video/999.4.0/2018/": [
+        "5.6G\t/v5/video/999.4.0/2018/09/02", 
+        "5.6G\t/v5/video/999.4.0/2018/09/03", 
+        "5.6G\t/v5/video/999.4.0/2018/09/11", 
+        "5.6G\t/v5/video/999.4.0/2018/09/05", 
+        "5.6G\t/v5/video/999.4.0/2018/09/09", 
+        "5.6G\t/v5/video/999.4.0/2018/09/06", 
+        "5.5G\t/v5/video/999.4.0/2018/09/08", 
+        "5.6G\t/v5/video/999.4.0/2018/09/04", 
+        "5.7G\t/v5/video/999.4.0/2018/09/01", 
+        "5.5G\t/v5/video/999.4.0/2018/09/10", 
+        "802M\t/v5/video/999.4.0/2018/09/12", 
+        "5.6G\t/v5/video/999.4.0/2018/09/07", 
+        "62G\t/v5/video/999.4.0/2018/09", 
+        "5.6G\t/v5/video/999.4.0/2018/08/27", 
+        "2.8G\t/v5/video/999.4.0/2018/08/28", 
+        "5.7G\t/v5/video/999.4.0/2018/08/30", 
+        "2.9G\t/v5/video/999.4.0/2018/08/29", 
+        "5.7G\t/v5/video/999.4.0/2018/08/31", 
+        "23G\t/v5/video/999.4.0/2018/08", 
+        "85G\t/v5/video/999.4.0/2018/"
+    ], 
+    "du -sh /v5/logs": [
+        "8.9M\t/v5/logs"
+    ], 
+    "ifconfig |grep 'inet\\b'": [
+        "          inet addr:192.168.2.10  Bcast:192.168.2.255  Mask:255.255.255.0", 
+        "          inet addr:10.70.32.28  Bcast:10.70.63.255  Mask:255.255.224.0", 
+        "          inet addr:127.0.0.1  Mask:255.0.0.0"
+    ], 
+    "initctl list |grep v5": [
+        "v5analytics start/running, process 2510", 
+        "v5firewall stop/waiting", 
+        "v5time start/running, process 2968", 
+        "v5calibration start/running, process 2555", 
+        "v5cameraMonitorCpulimit start/running, process 8057", 
+        "v5librarian start/running, process 2528", 
+        "v5onvif stop/waiting", 
+        "v5platform stop/waiting", 
+        "v5config-manager stop/waiting", 
+        "v5rpc start/running, process 2492", 
+        "v5nm start/running, process 2469", 
+        "v5config stop/waiting", 
+        "v5cfge start/running, process 2029", 
+        "v5xport start/running, process 2874", 
+        "v5ap stop/waiting", 
+        "v5rtsp start/running, process 2721", 
+        "v5configDB start/running, process 1983", 
+        "v5cameraMonitor start/running, process 2740", 
+        "v5diskMonitor start/running, process 2924"
+    ], 
+    "last reboot|tail -10": [
+        "reboot   system boot  3.10.40-gdacac96 Wed Sep 12 02:05 - 03:28  (01:23)    ", 
+        "reboot   system boot  3.10.40-gdacac96 Mon Sep 10 12:08 - 02:04 (1+13:55)   ", 
+        "reboot   system boot  3.10.40-gdacac96 Sun Sep  9 11:08 - 12:07 (1+00:59)   ", 
+        "reboot   system boot  3.10.40-gdacac96 Sat Sep  8 10:41 - 11:07 (1+00:26)   ", 
+        "reboot   system boot  3.10.40-gdacac96 Sat Sep  8 10:18 - 10:40  (00:22)    ", 
+        "reboot   system boot  3.10.40-gdacac96 Wed Sep  5 12:34 - 10:17 (2+21:42)   ", 
+        "reboot   system boot  3.10.40-gdacac96 Tue Sep  4 14:38 - 12:33  (21:54)    ", 
+        "", 
+        "wtmp begins Tue Sep  4 14:38:04 2018"
+    ], 
+    "ls -lart /v5/.version": [
+        "-rw-r--r-- 1 root root 48 Sep 12 02:01 /v5/.version"
+    ], 
+    "tail -n 10 /v5/v5data/events/v5serviceRestart.event": [
+        "2018-09-12 02:06:34,v5cameraMonitorCpulimit,Started,{}", 
+        "2018-09-12 02:06:44,v5xport,Stopped,{}", 
+        "2018-09-12 02:06:49,v5xport,Started,{}", 
+        "2018-09-12 02:06:54,v5diskMonitor,Started,{}", 
+        "2018-09-12 02:06:57,v5time,Started,{}", 
+        "2018-09-12 02:06:57,v5config-manager,Stopped,{}", 
+        "2018-09-12 02:27:53,v5cameraMonitorCpulimit,Stopped,{}", 
+        "2018-09-12 02:27:53,v5cameraMonitorCpulimit,Started,{}", 
+        "2018-09-12 02:49:19,v5cameraMonitorCpulimit,Stopped,{}", 
+        "2018-09-12 02:49:19,v5cameraMonitorCpulimit,Started,{}"
+    ], 
+    "uptime": [
+        " 03:28:30 up  1:23,  3 users,  load average: 0.87, 1.20, 1.27"
+    ]
+}
