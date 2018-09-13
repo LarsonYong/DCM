@@ -2,6 +2,8 @@ from ssh import ConnectSSH
 from pexpect import pxssh
 import argparse
 import json
+import time
+import datetime
 
 
 def main(ip, password):
@@ -14,7 +16,6 @@ def main(ip, password):
             cmd = ['uptime', 'df -h', 'initctl list |grep v5', 'last reboot|tail -10', 'tail -n 10 /v5/v5data/events/v5serviceRestart.event', 'cat /v5/.version', 'ifconfig |grep \'inet\\b\'', 'ls -lart /v5/.version', 'du -sh /v5/logs', 'du -mh --max-depth=2 /v5/video/999.4.0/2018/', 'du -mh --max-depth=2 /v5/video/999.18.0/2018/']
             ret = c.ssh_cmd(cmd)
             parsed = json.dumps(ret, indent=4, sort_keys=True)
-            print parsed
             with open('output.json', 'wb') as f:
                 f.write(parsed)
 
@@ -25,15 +26,20 @@ def main(ip, password):
 def data_process():
     with open('output.json') as f:
         raw_data = json.load(f)
-    get_uptime(raw_data['uptime'])
-    get_lastReboot(raw_data['last reboot|tail -10'])
-    get_version(raw_data['cat /v5/.version'], raw_data['ls -lart /v5/.version'])
-    get_diskUsage(raw_data['df -h'])
-    get_services_status(raw_data['initctl list |grep v5'])
-    get_video_size(raw_data['du -mh --max-depth=2 /v5/video/999.4.0/2018/'], raw_data['du -mh --max-depth=2 /v5/video/999.18.0/2018/'])
-    get_v5log_size(raw_data['du -sh /v5/logs'])
-    get_service_event(raw_data['tail -n 10 /v5/v5data/events/v5serviceRestart.event'])
-    get_interf(raw_data['ifconfig |grep \'inet\\b\''])
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+    data = {'uptime': get_uptime(raw_data['uptime']), 'last_reboot': get_lastReboot(raw_data['last reboot|tail -10']),
+            'version': get_version(raw_data['cat /v5/.version'], raw_data['ls -lart /v5/.version']),
+            'disk_usage': get_diskUsage(raw_data['df -h']),
+            'service_status': get_services_status(raw_data['initctl list |grep v5']),
+            'video_size': get_video_size(raw_data['du -mh --max-depth=2 /v5/video/999.4.0/2018/'],
+                                         raw_data['du -mh --max-depth=2 /v5/video/999.18.0/2018/']),
+            'log_size': get_v5log_size(raw_data['du -sh /v5/logs']), 'created_time': st,
+            'service_event': get_service_event(raw_data['tail -n 10 /v5/v5data/events/v5serviceRestart.event']),
+            'ip_interfaces': get_interf(raw_data['ifconfig |grep \'inet\\b\''])}
+    data = json.dumps(data, indent=4, sort_keys=True)
+    with open('12128.json', 'wb') as f:
+        f.write(data)
 
 
 def get_uptime(data):
@@ -45,6 +51,7 @@ def get_version(data1, data2):
     version = data1[0][32:36]
     modified_time = data2[0].split()[5] +' ' + data2[0].split()[6] +' ' +data2[0].split()[7]
     print version, modified_time
+    return version, modified_time
 
 
 def get_lastReboot(data):
@@ -68,7 +75,6 @@ def get_services_status(data):
     service_status = {}
     for line in data:
         if 'running' in line:
-            print line.split()[0]
             service_status[line.split()[0]] = "running"
         if 'waiting' in line:
             service_status[line.split()[0]] = "stopping"
