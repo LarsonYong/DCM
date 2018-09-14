@@ -23,7 +23,7 @@ def main(ip, password):
         print 'Unable to connect to ' + ip
 
 
-def data_process():
+def data_process(unitID):
     with open('output.json') as f:
         raw_data = json.load(f)
     ts = time.time()
@@ -38,17 +38,24 @@ def data_process():
             'service_event': get_service_event(raw_data['tail -n 10 /v5/v5data/events/v5serviceRestart.event']),
             'ip_interfaces': get_interf(raw_data['ifconfig |grep \'inet\\b\''])}
     data = json.dumps(data, indent=4, sort_keys=True)
-    with open('12128.json', 'wb') as f:
+    url = unitID + '.json'
+    with open(url, 'wb') as f:
         f.write(data)
 
 
 def get_uptime(data):
-    print "uptime:   " + data[0].split()[2]
-    return data[0].split()[2]
+    uptime = data[0].split()[2: -7]
+    str_uptime = ''
+    for i in uptime:
+        str_uptime = str_uptime + i
+        str_uptime.replace(',', ' ')
+    print "uptime:   "
+    print str_uptime
+    return str_uptime
 
 
 def get_version(data1, data2):
-    version = data1[0][32:36]
+    version = data1[0][-15:-11]
     modified_time = data2[0].split()[5] +' ' + data2[0].split()[6] +' ' +data2[0].split()[7]
     print version, modified_time
     return version, modified_time
@@ -65,19 +72,24 @@ def get_lastReboot(data):
 
 
 def get_diskUsage(data):
-    SSD_usage= data[-1].split()[1] + ' ' + data[-1].split()[3] + '/' + data[-1].split()[2] + ' ' + data[-1].split()[4]
-    FileSys_usage = data[1].split()[1] + ' ' + data[1].split()[3] + '/' + data[1].split()[2] + ' ' + data[1].split()[4]
+    ssdline = ''
+    for i in data:
+        if '/v5/video' in i:
+            ssdline = i
+    SSD_usage=[ float(ssdline.split()[3][:-1]), float(ssdline.split()[2][:-1])]
+    FileSys_usage =[float(data[1].split()[3][:-1]), float(data[1].split()[2][:-1])]
+    # FileSys_usage = [float(data[1].split()[3][:-1]), float(data[1].split()[2][:-1])]
     print SSD_usage, FileSys_usage
-    return SSD_usage, FileSys_usage
+    return [SSD_usage, FileSys_usage]
 
 
 def get_services_status(data):
     service_status = {}
     for line in data:
         if 'running' in line:
-            service_status[line.split()[0]] = "running"
+            service_status[line.split()[0]] = "Running"
         if 'waiting' in line:
-            service_status[line.split()[0]] = "stopping"
+            service_status[line.split()[0]] = "Stopped"
     print service_status
     return service_status
 
@@ -121,9 +133,13 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--password', help='unit passwordself.s.before[lencmd:]',
 
                         required=True)
+    parser.add_argument('-t', '--unitID', help='unitID',
+
+                        required=True)
     args = parser.parse_args()
     password = args.password
     unitIP = args.unitIP
+    unitID = args.unitID
     logfile = 'service'
-    # main(unitIP, password)
-    data_process()
+    main(unitIP, password)
+    data_process(unitID)

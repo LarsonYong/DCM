@@ -1,0 +1,98 @@
+{
+    "created_time": "2018-09-14 14:36:21", 
+    "disk_usage": [
+        [
+            208.0, 
+            251.0
+        ], 
+        [
+            2.4, 
+            4.4
+        ]
+    ], 
+    "ip_interfaces": [
+        "192.168.2.10", 
+        "10.70.35.56", 
+        "127.0.0.1", 
+        "10.200.0.1"
+    ], 
+    "last_reboot": [
+        3, 
+        "Sep 10 23:39"
+    ], 
+    "log_size": "2.3M", 
+    "service_event": [
+        "2018-09-14 12:00:02,ensureValidityNetworkConfigurations,return code = 0,{}", 
+        "2018-09-14 13:00:02,ensureValidityNetworkConfigurations,return code = 0,{}", 
+        "2018-09-14 14:00:02,ensureValidityNetworkConfigurations,return code = 0,{}", 
+        "2018-09-14 15:00:02,ensureValidityNetworkConfigurations,return code = 0,{}", 
+        "2018-09-14 16:00:02,ensureValidityNetworkConfigurations,return code = 0,{}", 
+        "2018-09-14 17:00:01,ensureValidityNetworkConfigurations,return code = 0,{}", 
+        "2018-09-14 18:00:02,ensureValidityNetworkConfigurations,return code = 0,{}", 
+        "2018-09-14 19:00:02,ensureValidityNetworkConfigurations,return code = 0,{}", 
+        "2018-09-14 20:00:01,ensureValidityNetworkConfigurations,return code = 0,{}", 
+        "2018-09-14 21:00:02,ensureValidityNetworkConfigurations,return code = 0,{}"
+    ], 
+    "service_status": {
+        "v5ap": "Stopped", 
+        "v5cfge": "Running", 
+        "v5config": "Stopped", 
+        "v5config-manager": "Stopped", 
+        "v5configDB": "Running", 
+        "v5diskMonitor": "Running", 
+        "v5firewall": "Stopped", 
+        "v5nm": "Running", 
+        "v5onvif": "Stopped", 
+        "v5platform": "Stopped", 
+        "v5rpc": "Running", 
+        "v5rtsp": "Running", 
+        "v5time": "Running", 
+        "v5www": "Stopped", 
+        "v5xport": "Running"
+    }, 
+    "uptime": "3days,20:10,", 
+    "version": [
+        "1807", 
+        "Jul 24 17:17"
+    ], 
+    "video_size": [
+        {
+            "08/29": "1.6G", 
+            "08/30": "1.6G", 
+            "08/31": "1.6G", 
+            "09/01": "1.6G", 
+            "09/02": "1.6G", 
+            "09/03": "1.6G", 
+            "09/04": "1.6G", 
+            "09/05": "1.6G", 
+            "09/06": "1.6G", 
+            "09/07": "1.6G", 
+            "09/08": "1.6G", 
+            "09/09": "1.6G", 
+            "09/10": "1.6G", 
+            "09/11": "1.6G", 
+            "09/12": "1.6G", 
+            "09/13": "1.6G", 
+            "09/14": "1.4G"
+        }, 
+        {
+            "08/29": "14G", 
+            "08/30": "14G", 
+            "08/31": "14G", 
+            "09/01": "14G", 
+            "09/02": "14G", 
+            "09/03": "14G", 
+            "09/04": "14G", 
+            "09/05": "14G", 
+            "09/06": "14G", 
+            "09/07": "14G", 
+            "09/08": "14G", 
+            "09/09": "14G", 
+            "09/10": "13G", 
+            "09/11": "14G", 
+            "09/12": "14G", 
+            "09/13": "14G", 
+            "09/14": "12G"
+        }
+    ]
+}

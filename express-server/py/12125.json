@@ -1,0 +1,98 @@
+{
+    "created_time": "2018-09-14 14:46:09", 
+    "disk_usage": [
+        [
+            95.0, 
+            365.0
+        ], 
+        [
+            6.2, 
+            7.1
+        ]
+    ], 
+    "ip_interfaces": [
+        "192.168.2.10", 
+        "127.0.0.1", 
+        "10.70.35.125"
+    ], 
+    "last_reboot": [
+        1, 
+        "Sep 13 01:16"
+    ], 
+    "log_size": "3.1M", 
+    "service_event": [
+        "2018-09-13 01:19:26,v5firewall,Stopped,{}", 
+        "2018-09-13 01:19:26,v5onvif,Started,{}", 
+        "2018-09-13 01:19:26,v5onvif,Stopped,{}", 
+        "2018-09-13 01:19:46,v5xport,Started,{}", 
+        "2018-09-13 01:19:55,v5rtsp,Started,{}", 
+        "2018-09-13 01:20:07,v5xport,Stopped,{}", 
+        "2018-09-13 01:20:12,v5xport,Started,{}", 
+        "2018-09-13 01:20:38,v5diskMonitor,Started,{}", 
+        "2018-09-13 01:20:43,v5time,Started,{}", 
+        "2018-09-13 01:20:43,v5config-manager,Stopped,{}"
+    ], 
+    "service_status": {
+        "v5analytics": "Running", 
+        "v5ap": "Stopped", 
+        "v5calibration": "Running", 
+        "v5cfge": "Running", 
+        "v5config-manager": "Stopped", 
+        "v5configDB": "Running", 
+        "v5diskMonitor": "Running", 
+        "v5firewall": "Stopped", 
+        "v5librarian": "Running", 
+        "v5nm": "Running", 
+        "v5onvif": "Stopped", 
+        "v5platform": "Stopped", 
+        "v5rpc": "Running", 
+        "v5rtsp": "Running", 
+        "v5time": "Running", 
+        "v5xport": "Running"
+    }, 
+    "uptime": "1day,20:29,", 
+    "version": [
+        "0815", 
+        "Aug 15 16:08"
+    ], 
+    "video_size": [
+        {
+            "08/29": "5.7G", 
+            "08/30": "5.7G", 
+            "08/31": "5.7G", 
+            "09/01": "5.7G", 
+            "09/02": "5.7G", 
+            "09/03": "5.7G", 
+            "09/04": "5.7G", 
+            "09/05": "5.7G", 
+            "09/06": "5.7G", 
+            "09/07": "5.7G", 
+            "09/08": "5.7G", 
+            "09/09": "5.7G", 
+            "09/10": "5.7G", 
+            "09/11": "5.7G", 
+            "09/12": "5.7G", 
+            "09/13": "5.6G", 
+            "09/14": "5.1G"
+        }, 
+        {
+            "08/29": "16G", 
+            "08/30": "16G", 
+            "08/31": "16G", 
+            "09/01": "16G", 
+            "09/02": "16G", 
+            "09/03": "16G", 
+            "09/04": "16G", 
+            "09/05": "16G", 
+            "09/06": "16G", 
+            "09/07": "16G", 
+            "09/08": "16G", 
+            "09/09": "16G", 
+            "09/10": "16G", 
+            "09/11": "16G", 
+            "09/12": "16G", 
+            "09/13": "16G", 
+            "09/14": "15G"
+        }
+    ]
+}

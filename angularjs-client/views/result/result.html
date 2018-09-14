@@ -36,7 +36,7 @@
       </div>
       <div class="card-body text-dark text-center">
         <div>
-          <p class="card-title " style="display:inline">Unit has been up for <h3 style="font-size:border;display:inline">{{result.uptime}}</h3> minutes. Reboot <h3 style="font-size:border;display:inline">{{result.last_reboot[0]}}</h3> times since {{result.last_reboot[1]}}</p>
+          <p class="card-title " style="display:inline">Unit  <h3 style="font-size:border;display:inline">{{unitID}}</h3> has been up for <h3 style="font-size:border;display:inline">{{result.uptime}}</h3>minutes . Reboot <h3 style="font-size:border;display:inline">{{result.last_reboot[0]}}</h3> times since {{result.last_reboot[1]}}</p>
         </div>
         <div>
           <p class="card-title text-center" style="display:inline">It has  <h3 style="font-size:border;display:inline">{{result.version[0]}}</h3> build. Upgraded at {{result.version[1]}}</p>
@@ -52,20 +52,22 @@
             <div class="col">
               <div class="card border-info mb-3" style="width: 100%;margin-bottom:0px">
                   <p class="card-header text-center" style=";">Disk Usage</p>
+
                 <div class="chart-fix">
-                  <canvas id="myChart" width="50px" height="50px"></canvas>
+                  <canvas id="myChart" width="45px" height="45px"></canvas>
                 </div>
                 <div class="chart-fix">
-                  <canvas id="myChart2" width="50%" height="50%"></canvas>
+                  <canvas id="myChart2" width="45px" height="50px"></canvas>
                 </div>
+
               </div>
-              <div class="card border-info mb-3" style="">
+              <div class="card border-info mb-3" style="width: 100%;">
                   <p class="card-header text-center" style=";">Recent Video Sizes</p>
-                  <div class="chart-fix">
-                    <canvas id="myChart3" width="50px" height="50px"></canvas>
+                  <div class="">
+                    <canvas id="myChart3" width="100px" height="50px"></canvas>
                   </div>
-                  <div class="chart-fix">
-                    <canvas id="myChart4" width="50px" height="50px"></canvas>
+                  <div class="">
+                    <canvas id="myChart4" width="100px" height="50px"></canvas>
                   </div>
 
               </div>
@@ -104,13 +106,16 @@
                   <tbody>
                     <tr ng-repeat="(key, val) in result.service_status ">
                       <th style="" class="">{{key}}</th>
-                      <td ng-class="{true: 'red', false: ''}[val == 'stopping']" style="width:30%" class="text-center">{{val}}</td>
+                      <td ng-class="{true: 'red', false: ''}[val == 'Stopped']" style="width:30%" class="text-center">{{val}}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
         </div>
+
+    </div>
+    <div class="row">
 
     </div>
   </div>

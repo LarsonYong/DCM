@@ -27,7 +27,7 @@
                     $location.path('/');
                 }
                 if (result !== true){
-                    vm.error = result.message;
+                    vm.error = result;
                     vm.loading = false;
                 }
             });
