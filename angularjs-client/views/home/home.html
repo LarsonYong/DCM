@@ -25,17 +25,18 @@
           <!-- <div class="card-header bold " style="font-size: 20px;">{{node.UnitID}}<span class="badge badge-dark"  style="font-weight:400;">{{node.Hardware.Platform}}</span></div> -->
           <div class="card-body no-padding-bottom">
             <h3 class="card-title" style="font-weight:bold">{{node.UnitID}}<span class="badge badge-dark">{{node.Hardware.Platform}}</span></h3>
-            <!-- <p class="card-text no-margin-bottom">IP address: {{node.Software.IP_address}}</p> -->
-            <p class="card-text lg-margin-bottom"><small class="text-muted">Last online 3 mins ago</small></p>
+            <!-- <p ng-if="$scope.status[0].UnitOnline == false" class="card-text no-margin-bottom">IP address: {{node.Software.IP_address}}</p> -->
+            <!-- <p class="card-text lg-margin-bottom"><small class="text-muted">Last online 3 mins ago</small></p> -->
+            <p ng-if="node.UnitOnline == false" class="card-text lg-margin-bottom"><small class="text-muted">Last online Time: {{node.UnitLastOnline}}</small></p>
+            <p ng-if="node.UnitOnline == true" class="card-text lg-margin-bottom"><small class="text-muted">Online now</small></p>
             <div class="c50px"></div>
           </div>
           <div class="card-body text-muted sm-padding-bottom">
               <button class="btn btn-link btn-sm btn-color-fix" type="button" data-toggle="collapse" ng-click="selectNode($event)" data-target="#collapse{{node.UnitID}}" aria-expanded="false" aria-controls="collapseExample">
                 More details >>
               </button>
-              <button class="btn btn-sm btn-primary float-right" style="margin-top: -0px; margin-left: 5px;font-weight:550" >Analyze</button>
-              <button class="btn btn-sm btn-outline-primary float-right" style="margin-top: 0px;" >Result</button>
-
+              <button ng-disabled="node.UnitOccupied" data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="btn btn-sm btn-primary float-right" style="margin-top: -0px; margin-left: 5px;font-weight:550" >Analyze</button>
+              <button ng-click="NvgResult(node.UnitID)" class="btn btn-sm btn-outline-primary float-right" style="margin-top: 0px;">Result</button>
             <div class="collapse xx" id="collapse{{node.UnitID}}">
             <div class="card card-body" style="border-left: 5px solid #848a90">
               <nav>

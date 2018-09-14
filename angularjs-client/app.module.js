@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'ngMessages', 'ngStorage','ngAnimate' ])
+        .module('app', ['ui.router', 'ngMessages', 'ngStorage','ngAnimate'])
         .config(config)
         .run(run);
 
@@ -12,6 +12,12 @@
 
         // app routes
         $stateProvider
+            .state('result', {
+                url:'/result/:id',
+                templateUrl: 'views/result/result.html',
+                controller: 'result.controller',
+                controllerAs: 'vm',
+            })
             .state('home', {
                 url: '/',
                 templateUrl: 'views/home/home.html',

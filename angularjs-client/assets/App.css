@@ -37,7 +37,14 @@ a {
 a:hover {
   color:#2781bf;
 }
-
+.red {
+  color: red
+}
+.chart-fix {
+  margin:10px 10px 10px 60px;
+  width: 60%;
+  height: 60%;
+}
 .fix {
   margin-left: 0px;
   margin-right: 0px;

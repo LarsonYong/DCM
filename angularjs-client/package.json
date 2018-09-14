@@ -17,7 +17,9 @@
     "angular-route": "^1.7.3",
     "angular-ui-router-css": "0.0.0",
     "angular-ui-router-styles": "0.0.6",
+    "chart.js": "^2.7.2",
     "http-server": "^0.11.1",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "popper.js": "^1.14.4"
   }
 }

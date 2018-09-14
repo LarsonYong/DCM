@@ -6,6 +6,7 @@ import * as userController from '../controllers/user.server.controller';
 import * as authController from '../controllers/auth.controller';
 import * as nodeController from '../controllers/node.server.controller'
 import * as statusController from '../controllers/status.server.controller'
+import * as resultController from '../controllers/result.server.controller'
 import verifyToken from '../controllers/token.controller'
 
 // get an instance of express router
@@ -29,6 +30,8 @@ router.route('/user/id/:id')
 router.route('/status/')
     .get(statusController.getData);
 
+router.route('/result/id/:id')
+    .get(resultController.getData);
 
 // router.route('/todo/')
 //      .get(todoController.getTodos)

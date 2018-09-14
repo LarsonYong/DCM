@@ -1,0 +1,116 @@
+
+<div class="container">
+  <div class="Header border-bottom">
+    <div class="logo">
+      <a href="/#/">
+      <img src="assets/logo.png" >
+    </a>
+    </div>
+    <div class="logout">
+      <p>Hi&nbsp {{username}} &nbsp  <a href="#/login">   Logout</a></p>
+    </div>
+  </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+    <div class="card border-info mb-3 sm-margin-top" style="max-width: 100%;">
+      <div class="card-header">Following data collected at {{result.created_time}}
+        <button type="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" data-target=".bd-example-modal-lg">View raw data</button>
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <table class="table table-hover sm-margin-top" style="table-layout: fixed; ">
+                <tbody>
+                  <tr ng-repeat="(key, val) in result">
+                    <th >{{key}}</th>
+                    <td>{{val}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-body text-dark text-center">
+        <div>
+          <p class="card-title " style="display:inline">Unit has been up for <h3 style="font-size:border;display:inline">{{result.uptime}}</h3> minutes. Reboot <h3 style="font-size:border;display:inline">{{result.last_reboot[0]}}</h3> times since {{result.last_reboot[1]}}</p>
+        </div>
+        <div>
+          <p class="card-title text-center" style="display:inline">It has  <h3 style="font-size:border;display:inline">{{result.version[0]}}</h3> build. Upgraded at {{result.version[1]}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class='row'>
+
+        <div class="col ">
+          <div class="row">
+            <div class="col">
+              <div class="card border-info mb-3" style="width: 100%;margin-bottom:0px">
+                  <p class="card-header text-center" style=";">Disk Usage</p>
+                <div class="chart-fix">
+                  <canvas id="myChart" width="50px" height="50px"></canvas>
+                </div>
+                <div class="chart-fix">
+                  <canvas id="myChart2" width="50%" height="50%"></canvas>
+                </div>
+              </div>
+              <div class="card border-info mb-3" style="">
+                  <p class="card-header text-center" style=";">Recent Video Sizes</p>
+                  <div class="chart-fix">
+                    <canvas id="myChart3" width="50px" height="50px"></canvas>
+                  </div>
+                  <div class="chart-fix">
+                    <canvas id="myChart4" width="50px" height="50px"></canvas>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card border-info mb-3" style="">
+            <p class="card-header text-center" style=";">IP address</p>
+            <table class="table table-hover   table-responsive-sm " style="table-layout: fixed; width: 100%; ">
+              <tbody>
+                <tr ng-repeat="(key, val) in result.ip_interfaces">
+                  <th style="wdith:15%" class="text-center">{{key + 1}}</th>
+                  <td style="width:80%" class="text-center">{{val}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card border-info mb-3" style="">
+            <p class="card-header text-center" style=";">Latest Service Events</p>
+            <table class="table table-hover   table-responsive-sm " style="table-layout: fixed; width: 100%; ">
+              <tbody>
+                <tr ng-repeat="(key, val) in result.service_event">
+                  <td>{{val}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col " style="height: 100%">
+          <div class="card border-info mb-3" style="">
+              <p class="card-header text-center" style=";">Services Status</p>
+              <div>
+
+                <table class="table table-hover   table-responsive-sm " style="table-layout: fixed; width: 100%;margin-top: 0px; ">
+                  <tbody>
+                    <tr ng-repeat="(key, val) in result.service_status ">
+                      <th style="" class="">{{key}}</th>
+                      <td ng-class="{true: 'red', false: ''}[val == 'stopping']" style="width:30%" class="text-center">{{val}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+
+    </div>
+  </div>

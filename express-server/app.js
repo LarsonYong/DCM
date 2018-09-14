@@ -6,6 +6,8 @@ import mongoose from 'mongoose';
 import bb from 'express-busboy';
 import SourceMapSupport from 'source-map-support';
 import session from 'express-session'
+var fs = require('fs')
+
 var MongoStore = require('connect-mongo')(session);
 
 // import routes
@@ -104,6 +106,8 @@ app.use('/api', router);
 app.get('/', (req,res) => {
   return res.end('Api working');
 })
+
+
 
 // catch 404
 app.use((req, res, next) => {

@@ -12,6 +12,7 @@
 
         function initController() {
           var headers = auth()
+
           getUser();
           $http.get('http://0.0.0.0:4001/api/node',{headers:headers})
               .success(function(response) {
@@ -26,6 +27,40 @@
                   return response.message
                 }
               })
+
+            $http.get('http://0.0.0.0:4001/api/status',{headers:headers})
+                .success(function(response) {
+                  var stauts = response.status
+                  $scope.status = status
+                  for (var i in response.status){
+                    // console.log(response.status[i])
+                    for (var j in $scope.nodes){
+                      if ($scope.nodes[j].UnitID == response.status[i].UnitID){
+                        $scope.nodes[j].UnitLastOnline = response.status[i].UnitLastOnline
+                        $scope.nodes[j].UnitOccupied = response.status[i].UnitOccupied
+                        $scope.nodes[j].UnitOnline = response.status[i].UnitOnline
+                      }
+                    }
+
+                  }
+                  return $scope.status
+                })
+                .error(function(response){
+                  console.log(response.message)
+                  if (response.auth === false){
+                    $location.path('/login');
+                  }else {
+                    return response.message
+                  }
+                })
+
+        }
+
+        function bindData(){
+          console.log($scope)
+          for (var i in $scope.status){
+            console.log(i)
+          }
         }
 
         function auth(){
@@ -78,6 +113,11 @@
 
 
           // $event.target.closest('div').parentNode.parentElement.classList.add('row').remove('card-colums')
+        }
+
+        $scope.NvgResult= function(UnitID){
+          var url = '/result/:id' + UnitID
+          $location.path(url);
         }
 
         function selectNode($event){
