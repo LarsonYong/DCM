@@ -15,7 +15,7 @@
 
         function Login(username, password, callback) {
 
-            $http.post('http://0.0.0.0:4001/api/login', { "username": username, "password": password },)
+            $http.post('http://127.0.0.1:4001/api/login', { "username": username, "password": password },)
                 .success(function (response) {
                     // login successful if there's a token in the response
                     if (response.auth) {

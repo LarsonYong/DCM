@@ -61,7 +61,7 @@
 
                   // These labels appear in the legend and in the tooltips when hovering different arcs
                   labels: [
-                      '# of G   Avail SSD Volume'
+                      '# of GB   Avail SSD Volume'
                   ],
                 }
                 var ctx = document.getElementById("myChart");
@@ -90,7 +90,7 @@
 
                   // These labels appear in the legend and in the tooltips when hovering different arcs
                   labels: [
-                      '# of G  Free FileSystem Space'
+                      '# of GB  Free FileSystem Space'
                   ],
                 }
                 var video_size1 = []

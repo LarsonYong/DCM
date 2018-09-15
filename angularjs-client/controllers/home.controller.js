@@ -14,7 +14,7 @@
           var headers = auth()
 
           getUser();
-          $http.get('http://0.0.0.0:4001/api/node',{headers:headers})
+          $http.get('http://127.0.0.1:4001/api/node',{headers:headers})
               .success(function(response) {
                 var nodes = response.nodes
                 $scope.nodes = nodes
