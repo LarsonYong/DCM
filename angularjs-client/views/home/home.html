@@ -35,7 +35,7 @@
               <button class="btn btn-link btn-sm btn-color-fix" type="button" data-toggle="collapse" ng-click="selectNode($event)" data-target="#collapse{{node.UnitID}}" aria-expanded="false" aria-controls="collapseExample">
                 More details >>
               </button>
-              <button ng-disabled="node.UnitOccupied" data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="btn btn-sm btn-primary float-right" style="margin-top: -0px; margin-left: 5px;font-weight:550" >Analyze</button>
+              <button ng-disabled="node.UnitOccupied || !node.UnitOnline" data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="btn btn-sm btn-primary float-right" style="margin-top: -0px; margin-left: 5px;font-weight:550" >Analyze</button>
               <button ng-click="NvgResult(node.UnitID)" class="btn btn-sm btn-outline-primary float-right" style="margin-top: 0px;">Result</button>
             <div class="collapse xx" id="collapse{{node.UnitID}}">
             <div class="card card-body" style="border-left: 5px solid #848a90">
