@@ -7,6 +7,8 @@ import bb from 'express-busboy';
 import SourceMapSupport from 'source-map-support';
 import session from 'express-session'
 var fs = require('fs')
+const cron = require("node-cron");
+var exec = require('child_process').exec,child;
 
 var MongoStore = require('connect-mongo')(session);
 
@@ -107,6 +109,20 @@ app.get('/', (req,res) => {
   return res.end('Api working');
 })
 
+cron.schedule("* * * * *", function() {
+      console.log("running a task every minute");
+
+
+      child = exec('node lib/ping-worker.js',
+        function (error, stdout, stderr) {
+          console.log('stdout: ' + stdout);
+          console.log('stderr: ' + stderr);
+          if (error !== null) {
+            console.log('exec error: ' + error);
+          }
+      });
+
+    });
 
 
 // catch 404
