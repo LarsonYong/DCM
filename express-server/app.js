@@ -109,10 +109,8 @@ app.get('/', (req,res) => {
   return res.end('Api working');
 })
 
-cron.schedule("* * * * *", function() {
-      console.log("running a task every minute");
-
-
+cron.schedule("*/5 * * * *", function() {
+      console.log("running a task every 5 minute");
       child = exec('node lib/ping-worker.js',
         function (error, stdout, stderr) {
           console.log('stdout: ' + stdout);
