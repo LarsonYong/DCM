@@ -30,8 +30,13 @@ router.route('/user/id/:id')
 router.route('/status/')
     .get(statusController.getData);
 
+router.route('/status/refresh')
+    .get(statusController.syncUnits);
+
 router.route('/result/id/:id')
     .get(resultController.getData);
+
+
 
 // router.route('/todo/')
 //      .get(todoController.getTodos)

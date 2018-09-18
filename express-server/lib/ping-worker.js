@@ -52,6 +52,7 @@ function getUnitIP(){
                });
             });
           }
+          console.log("Update DB done")
         })
       })
     });

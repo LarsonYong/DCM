@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'ngMessages', 'ngStorage','ngAnimate'])
+        .module('app', ['ui.router', 'ngMessages', 'ngStorage','ngAnimate', 'blockUI', 'ngRoute'])
         .config(config)
         .run(run);
 

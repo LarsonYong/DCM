@@ -5,14 +5,14 @@
         .module('app')
         .controller('home.controller', Controller);
 
-    function Controller($http,$localStorage, $location, $scope) {
+    function Controller($http,$localStorage, $location,blockUI, $scope, $state, $route, $timeout) {
         var vm = this;
-
+        var headers = auth()
         initController();
 
         function initController() {
           var headers = auth()
-
+          // var blockUI = blockUI.instances.get('blockUI');
           getUser();
           $http.get('http://127.0.0.1:4001/api/node',{headers:headers})
               .success(function(response) {
@@ -120,8 +120,56 @@
           $location.path(url);
         }
 
+        $scope.Refresh= function(){
+          console.log("Refreshing")
+          $http.get('http://0.0.0.0:4001/api/status/refresh',{headers:headers})
+              .success(function(response) {
+                console.log('Finished refresh')
+              })
+          blockUI.start("Start to check");
+          $timeout(function() {
+            blockUI.message("Almost there")
+          }, 4000);
+          $timeout(function() {
+            blockUI.message("Cleaning up")
+          }, 5500);
+          $timeout(function() {
+            blockUI.stop();
+
+          }, 6000);
+          $timeout(function() {
+
+            $http.get('http://0.0.0.0:4001/api/status',{headers:headers})
+                .success(function(response) {
+                  var stauts = response.status
+                  $scope.status = status
+                  for (var i in response.status){
+
+                    for (var j in $scope.nodes){
+                      if ($scope.nodes[j].UnitID == response.status[i].UnitID){
+                        $scope.nodes[j].UnitLastOnline = response.status[i].UnitLastOnline
+                        $scope.nodes[j].UnitOccupied = response.status[i].UnitOccupied
+                        $scope.nodes[j].UnitOnline = response.status[i].UnitOnline
+                      }
+                    }
+                  }
+                  return $scope.status
+                })
+                .error(function(response){
+
+                  if (response.auth === false){
+                    $location.path('/login');
+                  }else {
+                    return response.message
+                  }
+                })
+
+          }, 6500);
+        }
+
         function selectNode($event){
           console.log($event.target)
+
         }
 
         $scope.createImgNum= function (){
