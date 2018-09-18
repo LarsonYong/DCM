@@ -1,12 +1,12 @@
 {
-    "created_time": "2018-09-14 14:16:02", 
+    "created_time": "2018-09-18 16:04:42", 
     "disk_usage": [
         [
-            418.0, 
-            41.0
+            332.0, 
+            127.0
         ], 
         [
-            838.0, 
+            808.0, 
             2.6
         ]
     ], 
@@ -20,18 +20,18 @@
         1, 
         "Sep 12 22:33"
     ], 
-    "log_size": "5.9M", 
+    "log_size": "8.3M", 
     "service_event": [
-        "2018-09-13 23:32:17,v5cameraMonitorCpulimit,Stopped,{}", 
-        "2018-09-13 23:32:17,v5cameraMonitorCpulimit,Started,{}", 
-        "2018-09-14 05:37:07,v5cameraMonitorCpulimit,Stopped,{}", 
-        "2018-09-14 05:37:07,v5cameraMonitorCpulimit,Started,{}", 
-        "2018-09-14 11:06:53,v5cameraMonitorCpulimit,Stopped,{}", 
-        "2018-09-14 11:06:53,v5cameraMonitorCpulimit,Started,{}", 
-        "2018-09-14 17:01:54,v5cameraMonitorCpulimit,Stopped,{}", 
-        "2018-09-14 17:01:54,v5cameraMonitorCpulimit,Started,{}", 
-        "2018-09-14 20:17:10,v5cameraMonitorCpulimit,Stopped,{}", 
-        "2018-09-14 20:17:10,v5cameraMonitorCpulimit,Started,{}"
+        "2018-09-18 23:02:30,v5cameraMonitorCpulimit,Started,{}", 
+        "2018-09-18 23:02:30,v5cameraMonitorCpulimit,Stopped,{}", 
+        "2018-09-18 23:02:31,v5cameraMonitorCpulimit,Started,{}", 
+        "2018-09-18 23:02:58,v5xport,Stopped,{}", 
+        "2018-09-18 23:03:03,v5xport,Started,{}", 
+        "2018-09-18 23:03:27,v5diskMonitor,Started,{}", 
+        "2018-09-18 23:03:42,v5time,Started,{}", 
+        "2018-09-18 23:03:43,v5ap,Started,{}", 
+        "2018-09-18 23:03:43,v5config-manager,Stopped,{}", 
+        "2018-09-18 23:04:00,v5ap,Stopped,{}"
     ], 
     "service_status": {
         "v5ap": "Stopped", 
@@ -41,7 +41,7 @@
         "v5config-manager": "Stopped", 
         "v5configDB": "Running", 
         "v5diskMonitor": "Running", 
-        "v5firewall": "Running", 
+        "v5firewall": "Stopped", 
         "v5nm": "Running", 
         "v5onvif": "Stopped", 
         "v5platform": "Stopped", 
@@ -51,21 +51,29 @@
         "v5www": "Stopped", 
         "v5xport": "Running"
     }, 
-    "uptime": "1day,22:42,", 
+    "uptime": "6days,30min,", 
     "version": [
-        "0912", 
-        "Sep 12 22:05"
+        "0918", 
+        "Sep 18 22:56"
     ], 
     "video_size": [
         {
             "09/12": "268M", 
             "09/13": "5.4G", 
-            "09/14": "4.8G"
+            "09/14": "5.4G", 
+            "09/15": "5.4G", 
+            "09/16": "5.4G", 
+            "09/17": "5.3G", 
+            "09/18": "5.1G"
         }, 
         {
             "09/12": "789M", 
             "09/13": "16G", 
-            "09/14": "14G"
+            "09/14": "16G", 
+            "09/15": "16G", 
+            "09/16": "16G", 
+            "09/17": "16G", 
+            "09/18": "15G"
         }
     ]
 }

@@ -16,7 +16,7 @@ def main(ip, password):
             cmd = ['uptime', 'df -h', 'initctl list |grep v5', 'last reboot|tail -10', 'tail -n 10 /v5/v5data/events/v5serviceRestart.event', 'cat /v5/.version', 'ifconfig |grep \'inet\\b\'', 'ls -lart /v5/.version', 'du -sh /v5/logs', 'du -mh --max-depth=2 /v5/video/999.4.0/2018/', 'du -mh --max-depth=2 /v5/video/999.18.0/2018/']
             ret = c.ssh_cmd(cmd)
             parsed = json.dumps(ret, indent=4, sort_keys=True)
-            with open('output.json', 'wb') as f:
+            with open('py/output.json', 'wb') as f:
                 f.write(parsed)
 
     except pxssh.ExceptionPxssh as e:
@@ -24,7 +24,7 @@ def main(ip, password):
 
 
 def data_process(unitID):
-    with open('output.json') as f:
+    with open('py/output.json') as f:
         raw_data = json.load(f)
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
@@ -38,7 +38,7 @@ def data_process(unitID):
             'service_event': get_service_event(raw_data['tail -n 10 /v5/v5data/events/v5serviceRestart.event']),
             'ip_interfaces': get_interf(raw_data['ifconfig |grep \'inet\\b\''])}
     data = json.dumps(data, indent=4, sort_keys=True)
-    url = unitID + '.json'
+    url = 'py/' +unitID + '.json'
     with open(url, 'wb') as f:
         f.write(data)
 
@@ -143,3 +143,4 @@ if __name__ == '__main__':
     logfile = 'service'
     main(unitIP, password)
     data_process(unitID)
+    print "Done"

@@ -128,15 +128,20 @@
               })
           blockUI.start("Start to check");
           $timeout(function() {
+            blockUI.message("Checking now")
+          }, 1000);
+          $timeout(function() {
             blockUI.message("Almost there")
           }, 4000);
           $timeout(function() {
             blockUI.message("Cleaning up")
-          }, 5500);
+          }, 5000);
+          $timeout(function() {
+            blockUI.message("Done")
+          }, 6500);
           $timeout(function() {
             blockUI.stop();
-
-          }, 6000);
+          }, 7500);
           $timeout(function() {
 
             $http.get('http://0.0.0.0:4001/api/status',{headers:headers})
@@ -176,6 +181,48 @@
           var num= Math.floor(Math.random()*10) +1;
           var img= '0' + num +'.jpg'
           return img
+        }
+        $scope.Analyze= function (unitID, unitIP, platform){
+          console.log(unitID, unitIP, platform)
+          for (var j in $scope.nodes){
+            if ($scope.nodes[j].UnitID == unitID){
+              $scope.nodes[j].UnitOccupied = true
+            }
+          }
+          if (platform === "XU4"){
+            var data ={
+              "unitID": unitID,
+            	"unitIP": unitIP,
+            	"password": "odroid"
+            }
+          }else {
+            var data ={
+              "unitID": unitID,
+            	"unitIP": unitIP,
+            	"password": "freebsd"
+            }
+          }
+          console.log(data)
+          $http.post('http://0.0.0.0:4001/api/analyze',{data},{headers:headers})
+              .success(function(response) {
+                if (response.auth === false){
+                  $location.path('/login');
+                }else {
+                  console.log("Analyze done")
+                  for (var j in $scope.nodes){
+                    if ($scope.nodes[j].UnitID == unitID){
+                      $scope.nodes[j].UnitOccupied = false
+                    }
+                  }
+                }
+              })
+              .error(function(response){
+                if (response.auth === false){
+                  $location.path('/login');
+                }else {
+                  return response.message
+                }
+              })
         }
     }
 

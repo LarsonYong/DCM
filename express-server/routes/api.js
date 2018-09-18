@@ -36,6 +36,8 @@ router.route('/status/refresh')
 router.route('/result/id/:id')
     .get(resultController.getData);
 
+router.route('/analyze')
+    .post(resultController.analyzeUnit);
 
 
 // router.route('/todo/')

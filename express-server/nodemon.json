@@ -1,0 +1,6 @@
+{
+  "igonore": [
+    "py/*.json",
+    "py/ssh.pyc"
+  ]
+}

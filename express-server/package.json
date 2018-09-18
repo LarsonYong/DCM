@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app_hooked.js"
+    "start": "nodemon app_hooked.js --ignore 'py/*.json' --ignore 'py/*.pyc' --ignore '*.json'"
   },
   "author": "Jack",
   "license": "ISC",

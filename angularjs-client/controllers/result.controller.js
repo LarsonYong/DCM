@@ -4,7 +4,7 @@
         .module('app')
         .controller('result.controller', Controller);
 
-    function Controller($http, $localStorage, $stateParams, $location, $scope) {
+    function Controller($http, $localStorage, $stateParams, $location,$state, $scope) {
         var vm = this;
         // $scope.result = {}
         // $scope.result.disk_usage = [[0,0], [0,0]]
@@ -23,6 +23,11 @@
               var username = $localStorage.currentUser.username
               $scope.username=username;
           }
+        }
+
+        $scope.goHome= function (){
+          console.log("1111")
+          $location.path('/#');
         }
 
         function getStatus(UnitID){

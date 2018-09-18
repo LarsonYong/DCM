@@ -22,12 +22,12 @@ function getUnitIP(){
       result.forEach(function(node){
         ping.sys.probe(node.Software.IP_address, function(isAlive) {
           var msg = isAlive ? 'Unit ' + node.UnitID + ' is alive': 'Unit ' + node.UnitID + ' is dead';
-          // console.log(msg);
+          console.log(msg);
+          console.log(node.UnitID + ': ' + node.Software.IP_address)
           const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
           const currentTime = moment().tz(timezone).format();
           // console.log(currentTime)
           if (isAlive === true){
-
             MongoClient.connect(url, function(err, db) {
               if (err) throw err;
               var dbo = db.db("userbase");
@@ -52,7 +52,6 @@ function getUnitIP(){
                });
             });
           }
-          console.log("Update DB done")
         })
       })
     });
