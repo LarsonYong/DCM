@@ -25,7 +25,6 @@ function login(username, password) {
         ).then(res => {
           if (res.data.auth) {
             const user = res.data.user
-            console.log("1231", res.data.user)
             // login successful if there's a jwt token in the response
               if (user && res.data.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -59,6 +58,7 @@ function getAll() {
               if (json.err && json.err.message === 'jwt expired') {
                 browserHistory.replace('/login');
                 // location.href ='/login';
+                browserHistory.push('/login')
               }
               return Promise.reject(json.message)
             }

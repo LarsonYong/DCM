@@ -5,7 +5,6 @@ import logo from '../logo.svg';
 import '../_css/App.css';
 import { history } from '../_helpers';
 import { PrivateRoute } from '../_components';
-import { simpleAction } from '../actions/SimpleAction'
 import '../_css/App.css';
 import { Home } from '../Views/home'
 import { Login } from '../Views/login'
@@ -16,12 +15,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div className="container">
-          <div className="col-sm-8 col-sm-offset-2">
-              <h2>THis is from App</h2>
-          </div>
-        </div>
+
         <Router history={history}>
           <div>
             <PrivateRoute exact path="/home" component={Home} />
@@ -29,7 +23,6 @@ class App extends React.Component {
             <Route exact path="/" component={Login} />
           </div>
         </Router>
-      </div>
     );
   }
 }
@@ -41,7 +34,6 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
- simpleAction: () => dispatch(simpleAction())
 })
 
 const connectedApp  = connect(mapStateToProps, mapDispatchToProps)(App);
