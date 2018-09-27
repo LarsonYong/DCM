@@ -15,41 +15,49 @@ import  TopBar  from '../_components/TopBar';
 import { Login } from '../Views/login'
 import { history } from '../_helpers';
 
-
+import '../_css/bootstrap.min.css';
 // var TopBar = require('../_components/TopBar');
 
 class Home extends React.Component {
-  constructor(props){
-    super(props);
-  }
-  componentDidMount() {
-      userService.verifyToken1();
-      // this.props.dispatch(userActions.getAll());
+    constructor(props){
+      super(props);
     }
+    componentDidMount() {
+        userService.verifyToken1();
+        // this.props.dispatch(userActions.getAll());
+      }
 
-  render() {
-    const { user, users } = this.props;
-    return (
-        <Router history={browserHistory}>
-            <div id="Home">
-              <TopBar name={user}/>
-              <Switch>
-
-                <Route path="/login" render={function() {
-                    // history.push('/login')
-                    window.location.href='/login'
-               }} />
-                <Route path='/*' render={function () {
-                  return <div className="container"><p>Not Found</p></div>
-                }} />
-                <Route render={function () {
-                  return <div className="container"><p>Not Found</p></div>
-                }} />
-              </Switch>
-            </div>
-          </Router>
-    );
-  }
+    render() {
+      const { user, users } = this.props;
+      return (
+          <Router history={browserHistory}>
+              <div id="Home">
+                <TopBar name={user}/>
+                <Switch>
+                  <Route exact path='/unitManager' render={function () {
+                      return <div className="container-fluid"><h3 className="marg-top">This is unit manager</h3></div>
+                    }} />
+                  <Route exact path='/simUsage' render={function () {
+                      return <div className="container-fluid" ><h3 className="marg-top">This is sim usage page</h3></div>
+                    }} />
+                  <Route exact path='/gwManager' render={function () {
+                      return <div className="container-fluid"><h3 className="marg-top">This is gateway manager</h3></div>
+                    }} />
+                  <Route path="/login" render={function() {
+                      // history.push('/login')
+                      window.location.href='/login'
+                 }} />
+                  <Route path='/*' render={function () {
+                    return <div className="container-fluid"><p>Not Found 1</p></div>
+                  }} />
+                  <Route render={function () {
+                    return <div className="container-fluid"><p>Not Found 2</p></div>
+                  }} />
+                </Switch>
+              </div>
+            </Router>
+      );
+    }
 }
 
 function mapStateToProps(state) {

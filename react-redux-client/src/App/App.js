@@ -19,6 +19,9 @@ class App extends React.Component {
         <Router history={history}>
           <div>
             <PrivateRoute exact path="/home" component={Home} />
+            <PrivateRoute exact path="/unitManager" component={Home} />
+            <PrivateRoute exact path="/simUsage" component={Home} />
+            <PrivateRoute exact path="/gwManager" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/" component={Login} />
           </div>
