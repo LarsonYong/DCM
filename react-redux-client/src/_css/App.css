@@ -11,6 +11,9 @@ li {
   display: inline-block;
   cursor: pointer;
 }
+body {
+  background-color: #f6f8f7 !important;
+}
 .container-fluid{
   padding-right: 6% !important;
   padding-left: 6% !important;

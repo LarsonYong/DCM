@@ -1,19 +1,18 @@
 import React from "react";
 import {
   BrowserRouter as Router,
-  Link,
   Route,
   Switch,
 } from 'react-router-dom';
-import { Redirect } from 'react-router';
-import {IndexRoute, browserHistory} from 'react-router'
+import { browserHistory} from 'react-router'
 import { connect } from 'react-redux';
 import { userService } from '../_services';
 import { userActions } from '../_actions';
 
 import  TopBar  from '../_components/TopBar';
-import { Login } from '../Views/login'
-import { history } from '../_helpers';
+import { UnitManager } from '../_components/UnitManager';
+
+
 
 import '../_css/bootstrap.min.css';
 // var TopBar = require('../_components/TopBar');
@@ -24,7 +23,7 @@ class Home extends React.Component {
     }
     componentDidMount() {
         userService.verifyToken1();
-        // this.props.dispatch(userActions.getAll());
+        this.props.dispatch(userActions.getAll());
       }
 
     render() {
@@ -34,8 +33,11 @@ class Home extends React.Component {
               <div id="Home">
                 <TopBar name={user}/>
                 <Switch>
+                  <Route exact path='/home' render={function () {
+                      return <div className="container-fluid" ><h3 className="marg-top">This is Home page</h3></div>
+                    }} />
                   <Route exact path='/unitManager' render={function () {
-                      return <div className="container-fluid"><h3 className="marg-top">This is unit manager</h3></div>
+                      return <UnitManager />
                     }} />
                   <Route exact path='/simUsage' render={function () {
                       return <div className="container-fluid" ><h3 className="marg-top">This is sim usage page</h3></div>

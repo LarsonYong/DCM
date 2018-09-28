@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Router, Route } from 'react-router-dom';
-import logo from '../logo.svg';
 import '../_css/App.css';
 import { history } from '../_helpers';
 import { PrivateRoute } from '../_components';

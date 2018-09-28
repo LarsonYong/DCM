@@ -1,20 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  BrowserRouter as Router,
   Route,
   Redirect,
   NavLink,
-  withRouter
+
 } from "react-router-dom";
-import ReactDOM from 'react-dom'
 
 import '../_css/TopBar.css';
 
 export default class TopBar extends React.Component {
       constructor(props){
         super(props);
-        var currentPost = ''
+        var currentPost = 'Home'
         if (window.location.pathname === '/unitManager'){
           currentPost = 'Unit Manager'
         }
@@ -29,9 +27,7 @@ export default class TopBar extends React.Component {
           };
       }
 
-      componentWillUpdate(){
 
-      }
       componentWillUpdate(currentPost) {
         if (window.location.pathname === '/unitManager' && this.state.currentState !== 'Unit Manager'){
           this.setState({
@@ -55,7 +51,7 @@ export default class TopBar extends React.Component {
             <div className="container-fluid">
               <div className="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
                 <a className="navbar-brand mr-0 mr-md-2" href='/home'>
-                  <img className="top-logo" src={require('../_assets/v5-icon.png')}></img>
+                  <img className="top-logo" alt="Logo" src={require('../_assets/v5-icon.png')}></img>
                 </a>
               <div className="navbar-nav-scroll">
                 <ul className="navbar-nav bd-navbar-nav flex-row">
@@ -89,9 +85,7 @@ export default class TopBar extends React.Component {
                   <a className="nav-link" href="#">Check</a>
                 </li>
               </ul>
-
               </div>
-
             </div>
             <Route path='/login' render={function () {
               return <Redirect
