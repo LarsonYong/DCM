@@ -102,23 +102,40 @@ class UnitManager extends React.Component {
             <div className="col-10">
               <div className="content-container marr margT">
           <div id="card-area" className="card-area clearfix">
+            <table class="table table-hover table-bordered">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Unit ID</th>
+                  <th scope="col">Platfrom</th>
+                  <th scope="col">Network Status</th>
+                  <th scope="col">IP address</th>
+                  <th scope="col">Gateway</th>
+                  <th scope="col" className="th-fix">Full Infomation</th>
+                  <th scope="col" className="th-fix">Actions</th>
+                </tr>
+              </thead>
+
           {nodes.loading &&<em>Loading nodes...</em>}
           {nodes.error && <span className="text-danger">ERROR: {nodes.error}</span>}
-          {nodes.items && <div>{nodes.items.map((node, index) => (
-            <div id={node.UnitID} tabIndex={node.UnitID} ref={node.UnitID} key={index} onClick={() => this.onItemClick(node.UnitID)} onBlur={() => this.cancleDetailCard(node.UnitID)}  className='card'>
-             <div className='card-body clearfix'>
-               <div  className={"card-body-left " + node.Hardware.Platform } >
-                 <h2> {node.Hardware.Platform} </h2>
-               </div>
-               <div className="card-body-right">
-                 <h2> {node.UnitID}</h2>
-                 <p> {node.Software.IP_address}</p>
-                 <p> {node.Software.PrimaryInterface}</p>
-                
-               </div>
-             </div>
-            </div>
-          ))}</div>}
+          {nodes.items && <tbody>{nodes.items.map((node, index) => (
+              <tr>
+                  <th scope="row">{node.UnitID}</th>
+                  <td>{node.Hardware.Platform}</td>
+                  <td>Online</td>
+                  <td>{node.Software.IP_address}</td>
+                  <td>30</td>
+                  <td>
+                    <button className="btn  btn-sm btn-link btn-fix">More Details</button>
+                  </td>
+                  <td>
+
+                    <button className="btn  btn-sm btn-outline-success btn-fix">Analyze</button>
+                    <button className="btn btn-sm btn-outline-info btn-fix">Result</button>
+                  </td>
+                </tr>
+          ))}</tbody>}
+
+            </table>
           </div>
       </div>
             </div>

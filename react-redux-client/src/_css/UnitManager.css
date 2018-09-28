@@ -9,3 +9,16 @@
 .filter p {
   text-align: left;
 }
+.card-area {
+  margin-top: 20px;
+}
+.btn-fix {
+  margin-left: 20px;
+}
+.th-fix {
+  width: 15%;
+  padding-left: 30px !important;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #e7f3f8;
+}
