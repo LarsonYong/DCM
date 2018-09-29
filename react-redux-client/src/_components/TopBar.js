@@ -65,8 +65,9 @@ export default class TopBar extends React.Component {
                     {this.props.name}
                   </button>
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a className="dropdown-item" href="#">Admin</a>
                     <a className="dropdown-item" href="#">Setting</a>
-                    <a className="dropdown-item" href="#"><Link to="/login">Logout</Link></a>
+                    <div className="dropdown-item" href="#"><Link to="/login">Logout</Link></div>
                   </div>
                 </div>
               </div>

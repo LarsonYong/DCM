@@ -20,5 +20,27 @@
   padding-left: 30px !important;
 }
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #e7f3f8;
+  background-color: #f0fdf6;
+}
+.text-fix {
+}
+.card-hover:hover {
+  background-color: #f0fdf6
+}
+.title {
+  font-size: 14px;
+
+}
+.list-title-fix {
+  margin-top: 15px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.title-fix {
+  margin-bottom: 5px;
+}
+.header-fix {
+  background-color: white!important ;
+  border-bottom: 0px !important;
 }
