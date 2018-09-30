@@ -8,71 +8,142 @@ import { userService } from '../_services';
 import '../_css/UnitManager.css'
 import  NodeList  from './NodeList'
 
-// var NodeList = require('./NodeList')
-
-
-
-
 class UnitManager extends React.Component {
     constructor(props){
       super(props);
-      this.checkFilter = this.checkFilter.bind(this)
+      this.handleFilterChange = this.handleFilterChange.bind(this);
+      this.props.dispatch(nodeActions.getAll());
       this.state = {
-        filter: [
-          'all_platfrom',
-          'all_gateway',
-          'all_status'
-        ]
+        filter1: [
+          'All platforms',
+          'TK1',
+          'XU4',
+          'RPI',
+          'DELL'
+        ],
+        filter2: [
+          'All',
+          '30',
+          '40',
+          '50',
+          '60',
+          '70'
+        ],
+        filter3: [
+          'Online/Offline',
+          'Online',
+          'Offline'
+        ],
+        currentFilter1: 'All platforms',
+        currentFilter2: 'All',
+        currentFilter3: 'Online/Offline',
+        currentPage: 1,
+        listPerPage: 6,
+        nodes: [],
+        pageNumbers: [],
+        nodes: this.props.nodes
       }
       userService.verifyToken1();
-      this.props.dispatch(nodeActions.getAll());
 
+
+      this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
-
-      console.log("1111", this.props)
-    }
-
-    comnponentDidUpdate () {
-
     }
 
     componentWillUpdate(){
-      const pageNumbers = [];
-      const { nodes, currentPage, listPerPage } = this.props;
-      console.log("2222", this.state)
-      if (this.props.nodes.length >= 0) {
-          console.log("1111", this.props.nodes)
-          const indexOfLastList = currentPage * listPerPage;
-          const indexOfFirstList = indexOfLastList - listPerPage;
 
-          const currentList = this.props.nodes.slice(indexOfFirstList, indexOfLastList);
-
-          const renderLists = currentList.map((node, index) => {
-            return <NodeList node={node}/>
-          });
-
-          for (let i = 1; i <= Math.ceil(this.nodes.length / listPerPage); i++) {
-          pageNumbers.push(i);
-        }
-      }
     }
 
-    checkFilter(){
-      var platforms = document.getElementById("platform");
-      var platforms_selected = platforms.options[platforms.selectedIndex].defaultValue
-      var cnntd_gateways = document.getElementById("cnntd_gateway");
-      var cnntd_gateway_selected = cnntd_gateways.options[cnntd_gateways.selectedIndex].defaultValue
-      var status = document.getElementById("status");
-      var status_selected = status.options[status.selectedIndex].defaultValue
-      console.log(platforms_selected, cnntd_gateway_selected, status_selected)
+    handleClick(event) {
+      this.setState({
+        currentPage: Number(event.target.id)
+      });
+    }
+
+    handleFilterChange(event) {
+      console.log(event.target.id)
+      if (event.target.id === 'platform'){
+        this.setState({
+          currentFilter1: event.target.value
+        })
+      }
+      if (event.target.id === 'cnntd_gateway'){
+        this.setState({
+          currentFilter2: event.target.value
+        })
+      }
+      if (event.target.id === 'status'){
+        this.setState({
+          currentFilter3: event.target.value
+        })
+      }
     }
 
 
 
     render () {
+
       const { nodes } = this.props;
+      if (nodes.items) {
+
+          if (this.state.currentFilter1 === 'All platforms'){
+            // var filteredNodes = nodes.items
+            var filteredList = nodes.items.slice( (this.state.currentPage * this.state.listPerPage - this.state.listPerPage), this.state.currentPage * this.state.listPerPage)
+                .map((node, index) => {return <NodeList key={index} node={node}/>})
+            var pageNumbers = []
+              for (let i = 1; i <= Math.ceil(nodes.items.length / this.state.listPerPage); i++) {
+                pageNumbers.push(i);
+              }
+            var renderPageNumbers = pageNumbers.map(number => {
+              return (
+                <li
+                  key={number}
+                  id={number}
+                  onClick={this.handleClick}
+                >
+                  {number}
+                </li>
+              );
+            });
+          }else {
+            var filteredNodes = nodes.items.filter(e => e.Hardware.Platform === this.state.currentFilter1)
+            var filteredList = filteredNodes
+              .slice( (this.state.currentPage * this.state.listPerPage - this.state.listPerPage), this.state.currentPage * this.state.listPerPage)
+              .map((node, index) => {return <NodeList key={index} node={node}/>})
+            var pageNumbers = []
+              for (let i = 1; i <= Math.ceil(filteredNodes.length / this.state.listPerPage); i++) {
+                pageNumbers.push(i);
+              }
+            var renderPageNumbers = pageNumbers.map(number => {
+              return (
+                <li
+                  key={number}
+                  id={number}
+                  onClick={this.handleClick}
+                >
+                  {number}
+                </li>
+              );
+            });
+          }
+
+          if (this.state.currentFilter2 === 'All'){
+
+          }else {
+
+          }
+
+          if (this.state.currentFilter3 === 'Online/Offline'){
+
+          }else {
+
+          }
+
+
+      }
+
 
 
       return (
@@ -81,54 +152,44 @@ class UnitManager extends React.Component {
             <div className="col-2">
                     <div  className="filter">
                       <p>Platfroms</p>
-                      <select id="platform" className="form-control ">
-                        <option selected>All platforms</option>
-                        <option> TK1</option>
-                        <option> XU4</option>
-                        <option> RPI</option>
-                        <option> DELL</option>
+                      <select id="platform"  onChange={this.handleFilterChange} className="form-control ">
+                        {this.state.filter1.map((text, index) => {return <option key={index}>{text}</option>})}
                       </select>
                     </div>
                     <div   className="filter">
                       <p>Connected Gateway</p>
                       <select id="cnntd_gateway" className="form-control ">
-                        <option selected>All</option>
-                        <option >30</option>
-                        <option> 40</option>
-                        <option> 50</option>
-                        <option> 60</option>
-                        <option> 70</option>
+                        {this.state.filter2.map((text, index) => {return <option key={index}>{text}</option>})}
                       </select>
                       </div>
                     <div  className="filter">
                       <p>Status</p>
                       <select id="status"  className="form-control ">
-                        <option  selected>Online/Offline</option>
-                        <option> Online</option>
-                        <option> Offline</option>
+                        {this.state.filter3.map((text, index) => {return <option key={index}>{text}</option>})}
                       </select>
                       </div>
               </div>
             <div className="col-10">
               <div className="content-container marr margT">
                 <div id="card-area" className="card-area clearfix">
-                  <div className='card'>
+                  <div className=''>
                     <div className="card-header header-fix">
                       <h4 className="list-title-fix">Unit List</h4>
                       <div className="row title">
-                        <p className="col title-fix">ID</p>
+                        <p className="col title-fix sm-marg-left">ID</p>
                         <p className="col title-fix">Platfrom</p>
                         <p className="col title-fix">Status</p>
                         <p className="col title-fix">IP address</p>
                         <p className="col title-fix">Connected Gateway</p>
-                        <p className="col title-fix text-fix">Actions</p>
+                        <p className="col title-fix text-fix">Analyze</p>
                       </div>
                     </div>
                   </div>
-                  {nodes.items && <div>{nodes.items.map((node, index) => (
-                    <NodeList key={index} node={node}/>
-                  ))}</div>}
+                  {filteredList}
 
+                  {pageNumbers !== [] &&
+                     <div>{renderPageNumbers}</div>
+                  }
               </div>
               </div>
             </div>
@@ -147,38 +208,3 @@ function mapStateToProps(state) {
 
 const connectedUnitManager = connect(mapStateToProps)(UnitManager);
 export { connectedUnitManager as UnitManager };
-
-
-// <table class="table table-hover table-bordered">
-//   <thead class="thead-light">
-//     <tr>
-//       <th scope="col">Unit ID</th>
-//       <th scope="col">Platfrom</th>
-//       <th scope="col">Network Status</th>
-//       <th scope="col">IP address</th>
-//       <th scope="col">Gateway</th>
-//       <th scope="col" className="th-fix">Full Infomation</th>
-//       <th scope="col" className="th-fix">Actions</th>
-//     </tr>
-//   </thead>
-// {nodes.loading &&<em>Loading nodes...</em>}
-// {nodes.error && <span className="text-danger">ERROR: {nodes.error}</span>}
-// {nodes.items && <tbody>{nodes.items.map((node, index) => (
-//   <tr>
-//       <th scope="row">{node.UnitID}</th>
-//       <td>{node.Hardware.Platform}</td>
-//       <td>Online</td>
-//       <td>{node.Software.IP_address}</td>
-//       <td>30</td>
-//       <td>
-//         <button className="btn  btn-sm btn-link btn-fix">More Details</button>
-//       </td>
-//       <td>
-//
-//         <button className="btn  btn-sm btn-outline-success btn-fix">Analyze</button>
-//         <button className="btn btn-sm btn-outline-info btn-fix">Result</button>
-//       </td>
-//     </tr>
-// ))}</tbody>}
-//
-// </table>

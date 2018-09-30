@@ -10,19 +10,20 @@ export default class NodeList extends React.Component {
 
   render() {
      return (
-       <div className="card card-hover">
-        <div className='card-body '>
+       <div className=" card-hover">
+        <div className='card-body body-fix'>
           <div className="row">
             <p className="col col-fix">
-              <button className="btn btn-sm btn-link id-fix">{this.props.node.UnitID} ↓</button>
+              {this.props.node.UnitID}
             </p>
-            <p className="col col-fix p-fix">{this.props.node.Hardware.Platform}</p>
-            <p className="col col-fix p-fix">Online</p>
-            <p className="col col-fix p-fix">{this.props.node.Software.IP_address}</p>
-            <p className="col col-fix p-fix">10.70.32.30</p>
-            <div className="col col-fix p-fix">
-              <button className="btn btn-sm btn-outline-info ">Result</button>
-              <button className="btn btn-sm btn-outline-success btn-fix">Analyze</button>
+            <p className="col col-fix ">{this.props.node.Hardware.Platform}</p>
+            <p className="col col-fix ">Online</p>
+            <p className="col col-fix ">{this.props.node.Software.IP_address}</p>
+            <p className="col col-fix ">30</p>
+            <div className="col col-fix">
+              <button className="btn btn-sm btn-outline-success ">Start</button>
+              <button className="btn btn-sm btn-outline-info btn-fix ">Result</button>
+
             </div>
           </div>
         </div>

@@ -1,8 +1,18 @@
 .card-hover:hover {
-  background-color: #f0fdf6 !important;
+  background-color: #e7f2fd !important;
+  border-left: 4px solid #419ad1
 }
 .card-hover {
   background-color: white !important;
+  border-left: 4px solid white;
+  border-bottom: 1px solid #00000020;
+  /* border-right: 1px solid #00000020; */
+  /* border-left: 1px solid #00000020; */
+  /* margin-left: 16px; */
+  padding-left: 16px;
+}
+.body-fix {
+  border-bottom: 0px;
 }
 .col-fix {
   margin-bottom: 0px !important
@@ -12,4 +22,10 @@
 }
 .p-fix {
   margin-top: 7px;
+}
+.card-area {
+  border: 1px solid #00000020;
+}
+.col-btn-fix {
+  width: 25% !important;
 }

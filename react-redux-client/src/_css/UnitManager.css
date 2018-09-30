@@ -3,8 +3,8 @@
   padding-left: 15px !important;
   padding-right: 15px !important;
   margin-right: 10px;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 .filter p {
   text-align: left;
@@ -25,16 +25,19 @@
 .text-fix {
 }
 .card-hover:hover {
-  background-color: #f0fdf6
+  background-color: #A7B6C1 !important;
 }
 .title {
   font-size: 14px;
-
+}
+.sm-marg-left {
+  margin-left:20px;
 }
 .list-title-fix {
   margin-top: 15px;
   margin-bottom: 40px;
   font-weight: bold;
+  margin-left:20px;
 }
 
 .title-fix {
@@ -42,5 +45,6 @@
 }
 .header-fix {
   background-color: white!important ;
-  border-bottom: 0px !important;
+  /* border-bottom: 0px !important; */
+  border-bottom: 1px solid #00000020;
 }
