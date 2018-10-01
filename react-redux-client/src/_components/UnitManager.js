@@ -44,8 +44,6 @@ class UnitManager extends React.Component {
         nodes: this.props.nodes
       }
       userService.verifyToken1();
-
-
       this.handleClick = this.handleClick.bind(this);
     }
 
@@ -63,7 +61,6 @@ class UnitManager extends React.Component {
     }
 
     handleFilterChange(event) {
-      console.log(event.target.id)
       if (event.target.id === 'platform'){
         this.setState({
           currentFilter1: event.target.value
@@ -87,61 +84,41 @@ class UnitManager extends React.Component {
 
       const { nodes } = this.props;
       if (nodes.items) {
+          var tmpNodes = nodes.items
+          if (this.state.currentFilter1 === 'All platforms' && this.state.currentFilter2 == 'All'){
+            tmpNodes = nodes.items
+          }
+          if (this.state.currentFilter1 !== 'All platforms' && this.state.currentFilter2 !== 'All'){
+            tmpNodes = tmpNodes.filter(e => e.Hardware.Platform === this.state.currentFilter1).filter(e => e.Software.cnntd_gateway === this.state.currentFilter2)
+          }
+          if (this.state.currentFilter2 !== 'All' && this.state.currentFilter1 === 'All platforms'){
+            tmpNodes = tmpNodes.filter(e => e.Software.cnntd_gateway === this.state.currentFilter2)
+          }
 
-          if (this.state.currentFilter1 === 'All platforms'){
-            // var filteredNodes = nodes.items
-            var filteredList = nodes.items.slice( (this.state.currentPage * this.state.listPerPage - this.state.listPerPage), this.state.currentPage * this.state.listPerPage)
-                .map((node, index) => {return <NodeList key={index} node={node}/>})
-            var pageNumbers = []
-              for (let i = 1; i <= Math.ceil(nodes.items.length / this.state.listPerPage); i++) {
-                pageNumbers.push(i);
-              }
-            var renderPageNumbers = pageNumbers.map(number => {
+          if (this.state.currentFilter2 === 'All' && this.state.currentFilter1 !== 'All platforms'){
+            tmpNodes = tmpNodes.filter(e => e.Hardware.Platform === this.state.currentFilter1)
+          }
+
+          var filteredList = tmpNodes.slice( (this.state.currentPage * this.state.listPerPage - this.state.listPerPage), this.state.currentPage * this.state.listPerPage)
+                                  .map((node, index) => {return <NodeList key={index} node={node}/>})
+
+
+          var pageNumbers = []
+            for (let i = 1; i <= Math.ceil(tmpNodes.length / this.state.listPerPage); i++) {
+              pageNumbers.push(i);
+            }
+          var renderPageNumbers = pageNumbers.map(number => {
+            if (number === this.state.currentPage){
               return (
-                <li
-                  key={number}
-                  id={number}
-                  onClick={this.handleClick}
-                >
-                  {number}
-                </li>
+                  <li className="page-item active active-fix" ><a className="page-link" key={number} id={number} onClick={this.handleClick}>{number}</a></li>
               );
-            });
-          }else {
-            var filteredNodes = nodes.items.filter(e => e.Hardware.Platform === this.state.currentFilter1)
-            var filteredList = filteredNodes
-              .slice( (this.state.currentPage * this.state.listPerPage - this.state.listPerPage), this.state.currentPage * this.state.listPerPage)
-              .map((node, index) => {return <NodeList key={index} node={node}/>})
-            var pageNumbers = []
-              for (let i = 1; i <= Math.ceil(filteredNodes.length / this.state.listPerPage); i++) {
-                pageNumbers.push(i);
-              }
-            var renderPageNumbers = pageNumbers.map(number => {
+            }else {
               return (
-                <li
-                  key={number}
-                  id={number}
-                  onClick={this.handleClick}
-                >
-                  {number}
-                </li>
+                  <li className="page-item" ><a className="page-link" key={number} id={number} onClick={this.handleClick}>{number}</a></li>
               );
-            });
-          }
+            }
 
-          if (this.state.currentFilter2 === 'All'){
-
-          }else {
-
-          }
-
-          if (this.state.currentFilter3 === 'Online/Offline'){
-
-          }else {
-
-          }
-
-
+          })
       }
 
 
@@ -158,7 +135,7 @@ class UnitManager extends React.Component {
                     </div>
                     <div   className="filter">
                       <p>Connected Gateway</p>
-                      <select id="cnntd_gateway" className="form-control ">
+                      <select id="cnntd_gateway" onChange={this.handleFilterChange} className="form-control ">
                         {this.state.filter2.map((text, index) => {return <option key={index}>{text}</option>})}
                       </select>
                       </div>
@@ -188,7 +165,13 @@ class UnitManager extends React.Component {
                   {filteredList}
 
                   {pageNumbers !== [] &&
-                     <div>{renderPageNumbers}</div>
+                     <div>
+                       <nav aria-label="...">
+                        <ul className="pagination pagination-sm justify-content-center sm-padding-left">
+                          {renderPageNumbers}
+                        </ul>
+                      </nav>
+                     </div>
                   }
               </div>
               </div>

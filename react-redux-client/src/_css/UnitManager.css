@@ -48,3 +48,17 @@
   /* border-bottom: 0px !important; */
   border-bottom: 1px solid #00000020;
 }
+.pagination {
+  background-color: white;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.page-item.active .page-link {
+  background-color: #419ad1 !important;
+}
+.sm-padding-left {
+  padding-right:100px !important;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

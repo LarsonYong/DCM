@@ -1,0 +1,26 @@
+.DetailTitle {
+  font-weight: lighter;
+  padding: 10px 10px 10px 10px;
+}
+.DetailContent {
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+}
+.sm-marg-left {
+  margin-left:20px !important;
+}
+.height-fix {
+  height:20px;
+}
+.sm-marg-right {
+  margin-right: 20px !important;
+}
+.bdr-top {
+  /* border-top: 1px solid #00000020 !; */
+}
+.sm-fix {
+  width: 100%;
+  margin-left:25px;
+  margin-right: 25px;
+  text-align: center;
+}
